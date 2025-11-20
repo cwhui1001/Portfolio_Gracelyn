@@ -7,10 +7,10 @@ import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react'
 
 const education = [
   {
-    degree: 'Bachelor of Computer Science',
-    institution: 'University of Malaya',
+    degree: 'Bachelor of Science in Computer Science',
+    institution: 'Sunway University',
     location: 'Kuala Lumpur, Malaysia',
-    period: '2020 - 2024',
+    period: '2025 - 2027',
     gpa: '3.75',
     achievements: [
       'Dean\'s List for 3 consecutive semesters',
@@ -29,10 +29,10 @@ const education = [
   },
   {
     degree: 'Diploma in Information Technology',
-    institution: 'Polytechnic Sultan Salahuddin Abdul Aziz Shah',
+    institution: 'Sunway College Kuala Lumpur',
     location: 'Selangor, Malaysia',
-    period: '2018 - 2020',
-    gpa: '3.85',
+    period: '2023 - 2025',
+    gpa: '3.98',
     achievements: [
       'Graduated with Distinction',
       'Outstanding Student Award',

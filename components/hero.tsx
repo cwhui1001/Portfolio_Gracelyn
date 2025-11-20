@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react'
+import { ChevronDown, Github, Linkedin, Mail, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 
 export function Hero() {
@@ -254,7 +254,7 @@ export function Hero() {
               <Linkedin className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400" />
             </Link>
             <Link
-              href="https://github.com"
+              href="https://github.com/cwhui1001"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-all duration-300 transform hover:scale-110"
@@ -262,10 +262,18 @@ export function Hero() {
               <Github className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200" />
             </Link>
             <Link
-              href="mailto:gracelyn@example.com"
+              href="https://wa.me/601123137816"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-green-900 rounded-full transition-all duration-300 transform hover:scale-110"
             >
-              <Mail className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400" />
+              <MessageCircle className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400" />
+            </Link>
+            <Link
+              href="mailto:cwenhui10@gmail.com"
+              className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-red-100 dark:hover:bg-red-900 rounded-full transition-all duration-300 transform hover:scale-110"
+            >
+              <Mail className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400" />
             </Link>
           </motion.div>
         </motion.div>

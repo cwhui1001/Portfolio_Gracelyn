@@ -7,43 +7,46 @@ import { Calendar, MapPin, Building } from 'lucide-react'
 
 const experiences = [
   {
-    title: 'Software Developer',
-    company: 'Tech Innovations Ltd.',
-    location: 'Kuala Lumpur, Malaysia',
-    period: '2023 - Present',
+    title: 'Software Developer Intern',
+    company: 'Fast Track SDI Sdn Bhd',
+    location: 'Puchong, Selangor, Malaysia',
+    period: 'Apr 2025 - Aug 2025 · 5 mos',
+    type: 'Internship',
     responsibilities: [
-      'Developed and maintained web applications using React and Node.js',
-      'Collaborated with cross-functional teams to deliver high-quality software solutions',
-      'Implemented responsive designs and optimized application performance',
-      'Participated in code reviews and contributed to best practices documentation'
+      'Developed and maintained software applications using modern development practices',
+      'Gained hands-on experience with enterprise software development',
+      'Collaborated with senior developers on various projects',
+      'Applied academic knowledge to real-world software development scenarios'
     ],
-    technologies: ['React', 'Node.js', 'TypeScript', 'MongoDB']
+    technologies: ['FinTech', 'SAP ERP', 'Software Development', 'SAP Products', 'SAP Implementation', 'SAP BusinessObjects', 'SQL', 'C#']
   },
   {
-    title: 'Junior Frontend Developer',
-    company: 'Digital Solutions Co.',
-    location: 'Selangor, Malaysia',
-    period: '2022 - 2023',
+    title: 'IT Support Associate',
+    company: 'Sunway Education',
+    location: 'Subang Jaya, Selangor, Malaysia',
+    period: 'Jan 2025 - Apr 2025 · 4 mos',
+    type: 'Part-time',
     responsibilities: [
-      'Built responsive user interfaces using modern frontend frameworks',
-      'Worked closely with UI/UX designers to implement pixel-perfect designs',
-      'Optimized web applications for performance and accessibility',
-      'Assisted in migrating legacy applications to modern tech stack'
+      'Provided technical support to students and faculty members',
+      'Troubleshooted hardware and software issues across campus systems',
+      'Assisted with IT infrastructure maintenance and updates',
+      'Documented technical issues and solutions for knowledge base'
     ],
-    technologies: ['React', 'Vue.js', 'JavaScript', 'CSS3', 'HTML5']
+    technologies: ['Information Technology', 'Technical Support', 'Hardware Troubleshooting']
   },
   {
-    title: 'Web Development Intern',
-    company: 'StartupHub Malaysia',
-    location: 'Cyberjaya, Malaysia',
-    period: '2022 (3 months)',
+    title: 'Admissions Ambassador',
+    company: 'Sunway Admissions Ambassador',
+    location: 'Subang Jaya, Selangor, Malaysia',
+    period: 'Jan 2024 - Aug 2025 · 1 yr 8 mos',
+    type: 'Part-time',
     responsibilities: [
-      'Supported the development team in building web applications',
-      'Learned modern development practices and version control with Git',
-      'Contributed to bug fixes and small feature implementations',
-      'Gained hands-on experience with full-stack development'
+      'Assisted prospective students with admission inquiries and application processes',
+      'Provided guidance on course selection and university programs',
+      'Represented the university at education fairs and recruitment events',
+      'Maintained excellent customer service standards while handling student queries'
     ],
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'PHP', 'MySQL']
+    technologies: ['Customer Service', 'Communication', 'Student Relations']
   }
 ]
 

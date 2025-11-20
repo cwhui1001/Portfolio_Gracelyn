@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { Heart, Github, Linkedin, Mail } from 'lucide-react'
+import { Heart, Github, Linkedin, Mail, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 
 export function Footer() {
@@ -32,7 +32,7 @@ export function Footer() {
                 <Linkedin className="w-5 h-5" />
               </Link>
               <Link
-                href="https://github.com"
+                href="https://github.com/cwhui1001"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors duration-300"
@@ -40,8 +40,16 @@ export function Footer() {
                 <Github className="w-5 h-5" />
               </Link>
               <Link
-                href="mailto:gracelyn.chong@example.com"
+                href="https://wa.me/601123137816"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-gray-800 hover:bg-green-600 rounded-lg transition-colors duration-300"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </Link>
+              <Link
+                href="mailto:cwhui1001@gmail.com"
+                className="p-2 bg-gray-800 hover:bg-red-600 rounded-lg transition-colors duration-300"
               >
                 <Mail className="w-5 h-5" />
               </Link>

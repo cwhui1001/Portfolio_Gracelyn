@@ -120,24 +120,33 @@ export function Contact() {
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white">Email</h4>
                   <a 
-                    href="mailto:gracelyn.chong@example.com"
+                    href="mailto:cwenhui10@gmail.com"
                     className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
-                    gracelyn.chong@example.com
+                    cwenhui10@gmail.com
                   </a>
                 </div>
               </motion.div>
+
+              
 
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
               >
-                <div className="p-3 bg-gradient-to-r from-green-600 to-blue-600 rounded-lg text-white">
-                  <Phone className="w-6 h-6" />
+                <div className="p-3 bg-gradient-to-r from-green-500 to-green-600 rounded-lg text-white">
+                  <MessageCircle className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white">Phone</h4>
-                  <span className="text-gray-600 dark:text-gray-300">+60 12-345 6789</span>
+                  <h4 className="font-semibold text-gray-900 dark:text-white">WhatsApp</h4>
+                  <a 
+                    href="https://wa.me/601123137816"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+                  >
+                    +60 11-2313 7816
+                  </a>
                 </div>
               </motion.div>
 
@@ -174,7 +183,7 @@ export function Contact() {
                 <motion.a
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  href="https://github.com"
+                  href="https://github.com/cwhui1001"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-gray-800 hover:bg-gray-900 text-white rounded-lg transition-colors"

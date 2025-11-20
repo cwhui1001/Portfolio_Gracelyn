@@ -7,64 +7,136 @@ import { ExternalLink, Github, Code, Smartphone, Globe, Database } from 'lucide-
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce solution with modern design, secure payment integration, and real-time inventory management. Built with React and Node.js for optimal performance.',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Tailwind CSS'],
+    title: 'SAP Invoice Management Portal',
+    description: 'A comprehensive invoice management system built with SAP ERP integration. Features full-stack development with modern React frontend and robust Node.js backend, utilizing Supabase for data management.',
+    technologies: ['React', 'Node.js', 'Tailwind CSS', 'Supabase', 'C#', 'Blazor', 'FinTech', 'SAP ERP'],
     features: [
-      'Responsive design for all devices',
-      'Secure payment processing',
-      'Real-time inventory tracking',
-      'Admin dashboard for management'
+      'SAP ERP integration',
+      'Real-time invoice processing',
+      'Full-stack development',
+      'Modern responsive design'
     ],
     category: 'Full Stack',
     icon: <Globe className="w-6 h-6" />,
-    gradient: 'from-blue-500 to-purple-600'
+    gradient: 'from-blue-500 to-purple-600',
+    github: 'https://github.com/cwhui1001/SAPInvoiceOCR', // Private/Enterprise project
+    demo: '#' // Private/Enterprise project
   },
   {
-    title: 'Task Management App',
-    description: 'A collaborative project management tool with real-time updates, team collaboration features, and intuitive drag-and-drop interface for enhanced productivity.',
-    technologies: ['Vue.js', 'Express.js', 'Socket.io', 'PostgreSQL'],
+    title: 'SAP Support Chatbot',
+    description: 'An intelligent AI-powered chatbot designed to provide automated support for SAP-related queries. Built with artificial intelligence capabilities to enhance user experience and reduce support response time.',
+    technologies: ['C#', 'Artificial Intelligence (AI)', 'Chatbot Development'],
     features: [
-      'Real-time collaboration',
-      'Drag-and-drop interface',
-      'Team management system',
-      'Progress tracking & analytics'
+      'AI-powered responses',
+      'SAP system integration',
+      'Automated support queries',
+      'Real-time assistance'
+    ],
+    category: 'AI',
+    icon: <Code className="w-6 h-6" />,
+    gradient: 'from-green-500 to-teal-600',
+    github: 'https://github.com/cwhui1001/SAPChatbot3-', // Private/Enterprise project
+    demo: '#' // Private/Enterprise project
+  },
+  {
+    title: 'BrighterUs',
+    description: 'A comprehensive tertiary education platform that consolidates university information with innovative features. Supports students in pursuing education efficiently while reducing search time across multiple platforms.',
+    technologies: ['Laravel', 'PHP', 'HTML', 'CSS', 'Web Development', 'Full-Stack Development', 'UI Design', 'UX'],
+    features: [
+      'University information consolidation',
+      'Student support features',
+      'Efficient course searching',
+      'Multi-platform integration'
     ],
     category: 'Web App',
-    icon: <Code className="w-6 h-6" />,
-    gradient: 'from-green-500 to-teal-600'
+    icon: <Globe className="w-6 h-6" />,
+    gradient: 'from-purple-500 to-pink-600',
+    github: 'https://github.com/cwhui1001/BrighterUs', // Academic project
+    demo: '#' // Academic project
   },
   {
-    title: 'Mobile Banking App UI',
-    description: 'Modern mobile banking interface design with focus on user experience, accessibility, and security. Prototype built with React Native for cross-platform compatibility.',
-    technologies: ['React Native', 'TypeScript', 'Redux', 'Figma'],
+    title: 'Timeless Tribute',
+    description: 'A mobile application designed to help users honor and maintain graves of loved ones remotely. Addresses challenges of distance and busy schedules by enabling remote tribute services and cultural practice preservation.',
+    technologies: ['Mobile Design', 'Mobile Applications', 'UI Design', 'UX'],
     features: [
-      'Biometric authentication',
-      'Transaction history',
-      'Budget tracking',
-      'Cross-platform compatibility'
+      'Remote grave maintenance',
+      'Cultural practice preservation',
+      'User-friendly interface',
+      'Memorial service management'
     ],
     category: 'Mobile',
     icon: <Smartphone className="w-6 h-6" />,
-    gradient: 'from-purple-500 to-pink-600'
+    gradient: 'from-orange-500 to-red-600',
+    github: 'https://github.com/cwhui1001/Timeless-Tribute',
+    demo: '#'
   },
   {
-    title: 'Data Analytics Dashboard',
-    description: 'Interactive dashboard for business intelligence with real-time data visualization, custom reports, and advanced filtering capabilities for data-driven decisions.',
-    technologies: ['Angular', 'D3.js', 'Python', 'FastAPI', 'Redis'],
+    title: 'Huan Fitness Pal',
+    description: 'A user-friendly fitness platform designed to help users manage fitness goals. Provides personalized features including body weight tracking, gym and yoga class access, and customized progress charts.',
+    technologies: ['Web Development', 'Full-Stack Development'],
     features: [
-      'Real-time data visualization',
-      'Custom report generation',
-      'Advanced filtering system',
-      'Export functionality'
+      'Fitness goal management',
+      'Body weight tracking',
+      'Gym and yoga class access',
+      'Customized progress charts'
     ],
-    category: 'Analytics',
+    category: 'Web App',
     icon: <Database className="w-6 h-6" />,
-    gradient: 'from-orange-500 to-red-600'
+    gradient: 'from-blue-500 to-green-600',
+    github: 'https://github.com/cwhui1001/huan_fitness_pal',
+    demo: '#'
+  },
+  {
+    title: 'MyEV Car Loan Calculator',
+    description: 'A user-friendly mobile application designed to help users calculate car loan payments specifically for electric vehicles (EVs). Streamlines the financial planning process for EV purchases.',
+    technologies: ['Mobile Application Development'],
+    features: [
+      'EV loan calculations',
+      'User-friendly interface',
+      'Financial planning tools',
+      'Mobile optimization'
+    ],
+    category: 'Mobile',
+    icon: <Smartphone className="w-6 h-6" />,
+    gradient: 'from-purple-500 to-blue-600',
+    github: 'https://github.com/cwhui1001/MyEV',
+    demo: 'https://github.com/cwhui1001/MyEV/releases/download/MyEV/app-debug.apk'
+  },
+  {
+    title: 'MyToDo',
+    description: 'A simple and efficient task management application that helps users organize and track daily tasks, reminders, and priorities. Personal note-taking app with full-stack development and mobile application features.',
+    technologies: ['Full-Stack Development', 'Mobile Application Development'],
+    features: [
+      'Task organization',
+      'Daily reminders',
+      'Priority management',
+      'Note-taking capabilities'
+    ],
+    category: 'Mobile',
+    icon: <Code className="w-6 h-6" />,
+    gradient: 'from-green-500 to-purple-600',
+    github: 'https://github.com/cwhui1001/MyToDo',
+    demo: 'https://github.com/cwhui1001/MyToDo/releases/download/MyToDo/app-debug.apk'
+  },
+  {
+    title: 'SDG 13 - Climate Action',
+    description: 'A dedicated website promoting SDG 13: Climate Action. Provides comprehensive information including climate change introduction, combat targets, upcoming events, and contribution opportunities through donations.',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Web Development', 'Web Design', 'UI Design', 'UX'],
+    features: [
+      'Climate change education',
+      'Event information',
+      'Donation platform',
+      'Responsive web design'
+    ],
+    category: 'Web App',
+    icon: <Globe className="w-6 h-6" />,
+    gradient: 'from-green-500 to-blue-600',
+    github: 'https://github.com/cwhui1001/Climate-Action',
+    demo: 'https://cwhui1001.github.io/Climate-Action/'
   }
 ]
 
-const categories = ['All', 'Full Stack', 'Web App', 'Mobile', 'Analytics']
+const categories = ['All', 'Full Stack', 'Web App', 'Mobile', 'AI']
 
 export function Projects() {
   const ref = useRef(null)
@@ -180,14 +252,39 @@ export function Projects() {
 
                 {/* Action Buttons */}
                 <div className="flex gap-4">
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </button>
-                  <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">
-                    <Github className="w-4 h-4" />
-                    Source Code
-                  </button>
+                  {project.demo !== '#' ? (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </a>
+                  ) : (
+                    <span className="flex items-center gap-2 px-4 py-2 bg-gray-400 text-white rounded-lg cursor-not-allowed opacity-60">
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </span>
+                  )}
+                  
+                  {project.github !== '#' ? (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
+                    >
+                      <Github className="w-4 h-4" />
+                      Source Code
+                    </a>
+                  ) : (
+                    <span className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-400 dark:text-gray-500 rounded-lg cursor-not-allowed opacity-60">
+                      <Github className="w-4 h-4" />
+                      Private/Enterprise
+                    </span>
+                  )}
                 </div>
               </div>
             </motion.div>
