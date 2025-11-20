@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
+import { AnimatedBackground } from '@/components/animated-background'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,7 +29,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange={false}
         >
-          <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+          <AnimatedBackground />
+          <div className="min-h-screen relative z-10">
             <Navbar />
             <main>{children}</main>
             <Footer />
