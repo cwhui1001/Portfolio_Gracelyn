@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Screenshot Placeholder Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .preview {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            border-radius: 8px;
+            position: relative;
+        }
+        .mockup {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+        }
+        .nav-bar {
+            height: 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .content-area {
+            height: 80px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .sidebar {
+            width: 30%;
+            height: 60px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 4px;
+            float: left;
+            margin-right: 10px;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #5a67d8;
+        }
+        .download-link {
+            display: none;
+        }
+        h1 { color: #333; text-align: center; }
+        h2 { color: #667eea; }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Screenshot Placeholder Generator</h1>
+        <p>This tool generates placeholder screenshots for your portfolio projects. These are temporary placeholders until you upload actual project screenshots.</p>
+        
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>SAP Invoice Management Portal</h3>
+                <div class="preview" id="sap-invoice">
+                    <div class="mockup">
+                        <div class="nav-bar"></div>
+                        <h3>Invoice Dashboard</h3>
+                        <div class="content-area"></div>
+                        <div class="sidebar"></div>
+                        <p style="clear:both; margin-top:10px; font-size:12px;">Enterprise Invoice Management</p>
+                    </div>
+                </div>
+                <button onclick="generateImage('sap-invoice', 'SAP Invoice Management - Dashboard')">Generate Dashboard</button>
+            </div>
+
+            <div class="project-card">
+                <h3>SAP Support Chatbot</h3>
+                <div class="preview" id="sap-chatbot" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="mockup">
+                        <div class="nav-bar"></div>
+                        <h3>AI Chatbot Interface</h3>
+                        <div class="content-area"></div>
+                        <p style="font-size:12px;">Intelligent Support System</p>
+                    </div>
+                </div>
+                <button onclick="generateImage('sap-chatbot', 'SAP Support Chatbot - Interface')">Generate Interface</button>
+            </div>
+
+            <div class="project-card">
+                <h3>BrighterUs</h3>
+                <div class="preview" id="brighterus" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="mockup">
+                        <div class="nav-bar"></div>
+                        <h3>Education Platform</h3>
+                        <div class="content-area"></div>
+                        <p style="font-size:12px;">University Information Hub</p>
+                    </div>
+                </div>
+                <button onclick="generateImage('brighterus', 'BrighterUs - Homepage')">Generate Homepage</button>
+            </div>
+
+            <div class="project-card">
+                <h3>Timeless Tribute</h3>
+                <div class="preview" id="timeless-tribute" style="background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);">
+                    <div class="mockup">
+                        <div class="nav-bar"></div>
+                        <h3>Memorial Service</h3>
+                        <div class="content-area"></div>
+                        <p style="font-size:12px;">Remote Grave Management</p>
+                    </div>
+                </div>
+                <button onclick="generateImage('timeless-tribute', 'Timeless Tribute - Home')">Generate Home Screen</button>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #e3f2fd; border-radius: 8px;">
+            <h2>Instructions:</h2>
+            <ol>
+                <li>Click "Generate" buttons above to create placeholder images</li>
+                <li>Right-click on generated images and "Save image as..."</li>
+                <li>Save images to the corresponding project folders in <code>/public/images/projects/</code></li>
+                <li>Replace with actual project screenshots when available</li>
+            </ol>
+        </div>
+
+        <canvas id="canvas" style="display: none;" width="800" height="600"></canvas>
+        <a id="download-link" class="download-link" download="placeholder.jpg">Download</a>
+    </div>
+
+    <script>
+        function generateImage(elementId, title) {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const element = document.getElementById(elementId);
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add title
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 40px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(title, canvas.width / 2, 100);
+            
+            // Add mockup interface
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.fillRect(100, 150, canvas.width - 200, 50); // Nav bar
+            
+            ctx.fillRect(100, 250, canvas.width - 400, 200); // Sidebar
+            ctx.fillRect(350, 250, canvas.width - 450, 200); // Main content
+            
+            // Add placeholder text
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.font = '16px Arial';
+            ctx.fillText('Interface Preview', canvas.width / 2, 350);
+            ctx.fillText('Click to view full project details', canvas.width / 2, 380);
+            
+            // Convert to image and trigger download
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.getElementById('download-link');
+                link.href = url;
+                link.download = title.toLowerCase().replace(/\s+/g, '-') + '.jpg';
+                link.click();
+                URL.revokeObjectURL(url);
+            }, 'image/jpeg', 0.9);
+        }
+    </script>
+</body>
+</html>

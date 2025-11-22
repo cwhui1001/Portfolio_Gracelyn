@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { GraduationCap, Calendar, MapPin, Award, X, Eye } from 'lucide-react'
+import Image from 'next/image'
 
 const education = [
   {
@@ -11,11 +12,13 @@ const education = [
     institution: 'Sunway University',
     location: 'Kuala Lumpur, Malaysia',
     period: '2025 - 2027',
-    gpa: '3.75',
+    gpa: '3.90',
     achievements: [
       'Dean\'s List for 3 consecutive semesters',
+      'Full Scholarship Recipient',
       'Best Final Year Project Award',
-      'Active member of Computer Science Society',
+      'Active member of Sunway Tech Club, Sunway Robotic Club, Sunway Yoga Club',
+      'Volunteered in university open day events',
       'Completed with Honors'
     ],
     courses: [
@@ -36,49 +39,83 @@ const education = [
     achievements: [
       'Graduated with Distinction',
       'Outstanding Student Award',
-      'President of IT Club',
-      'Organized multiple tech workshops'
+      'Member of Sunway Tech Club, Sunway Yoga Club',
+      'Actively participated in multiple tech workshops', 
+      'Volunteered in open day events'
     ],
     courses: [
       'Programming Fundamentals',
       'Object-Oriented Programming',
       'Network Administration',
-      'System Analysis & Design',
-      'Digital Media Technology'
+      'System Analysis & Design'
+    ]
+  },
+  {
+    degree: 'Malaysian Certificate of Education (SPM)',
+    institution: 'SMK USJ 12',
+    location: 'Subang Jaya, Selangor, Malaysia',
+    period: '2018 - 2022',
+    results: '10As (2A+,3A,5A-)',
+    achievements: [
+      'Excellent academic performance with 10As',
+      'Active member of Wushu Club',
+      'Participated in Badminton Club',
+      'Member of Mathematics Club'
+    ],
+    courses: [
+      'Mathematics',
+      'Additional Mathematics',
+      'Physics',
+      'Chemistry',
+      'Accounting',
+      'Computer Science'
     ]
   }
 ]
 
 const certifications = [
   {
-    name: 'AWS Certified Developer Associate',
-    issuer: 'Amazon Web Services',
-    date: '2023',
-    icon: '☁️'
+    name: 'Microsoft Learn Challenge | Ignite Edition: Build trustworthy AI solutions on Microsoft Azure',
+    issuer: 'Microsoft',
+    date: 'Jan 2025',
+    icon: '🤖',
+    credentialUrl: 'https://learn.microsoft.com/en-gb/users/gracelyn-1001/achievements/dc7c2b6j?ref=https%3A%2F%2Fwww.linkedin.com%2F',
+    skills: ['Artificial Intelligence (AI)'],
+    image: '/certificates/microsoftAI.png' // Add your certificate image path
   },
   {
-    name: 'React Developer Certification',
-    issuer: 'Meta',
-    date: '2023',
-    icon: '⚛️'
+    name: 'Umpsa x Huawei AppGallery Mobile App Competition',
+    issuer: 'Universiti Malaysia Pahang Al-Sultan Abdullah',
+    date: 'Nov 2024',
+    icon: '📱',
+    credentialUrl: 'https://drive.google.com/file/d/1CCp4rWP30qmsW1CFWEcjtC5x3AB0YvSZ/view',
+    skills: ['User Experience (UX)', 'User Interface Design', 'Mobile Applications'],
+    image: '/certificates/TimelessTribute.png' // Add your certificate image path
   },
   {
-    name: 'Google Analytics Certified',
-    issuer: 'Google',
-    date: '2022',
-    icon: '📊'
+    name: 'DELF A2',
+    issuer: 'France Education International',
+    date: 'Jan 2023',
+    icon: '🇫🇷',
+    credentialUrl: '#',
+    skills: ['French'],
+    image: '/certificates/DelfA2.png' // Add your certificate image path
   },
   {
-    name: 'Scrum Master Certification',
-    issuer: 'Scrum Alliance',
-    date: '2022',
-    icon: '🏃‍♂️'
+    name: 'Jeffrey Cheah Foundation Scholarship',
+    issuer: 'Sunway Education',
+    date: 'Jul 2025',
+    icon: '🏆',
+    credentialUrl: '#',
+    skills: ['Full Scholarship', 'Academic Excellence'],
+    image: '/certificates/JCF.jpeg' // Add your certificate image path
   }
 ]
 
 export function Education() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
+  const [selectedCertificate, setSelectedCertificate] = useState<any>(null)
 
   return (
     <section id="education" className="py-20 bg-white dark:bg-gray-900">
@@ -144,7 +181,9 @@ export function Education() {
                       </div>
                       <div className="flex items-center gap-2">
                         <Award className="w-4 h-4" />
-                        <span>GPA: {edu.gpa}/4.0</span>
+                        <span>
+                          {edu.results ? edu.results : `GPA: ${edu.gpa}/4.0`}
+                        </span>
                       </div>
                     </div>
 
@@ -193,35 +232,139 @@ export function Education() {
             className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3"
           >
             <Award className="w-8 h-8 text-purple-600" />
-            Professional Certifications
+            Professional Certifications & Awards
           </motion.h3>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {certifications.map((cert, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
-                className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 group"
+                className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-all duration-300 group"
               >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {cert.icon}
+                <div className="flex items-start gap-4">
+                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                    {cert.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-2 leading-tight">
+                      {cert.name}
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                      {cert.issuer}
+                    </p>
+                    <p className="text-blue-600 dark:text-blue-400 font-medium text-sm mb-3">
+                      {cert.date}
+                    </p>
+                    
+              
+                    
+                    {cert.skills && (
+                      <div className="mb-3">
+                        <div className="flex flex-wrap gap-1">
+                          {cert.skills.map((skill, skillIndex) => (
+                            <span
+                              key={skillIndex}
+                              className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded text-xs"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {cert.credentialUrl && cert.credentialUrl !== '#' && (
+                        <a
+                          href={cert.credentialUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium transition-colors duration-300"
+                        >
+                          <Award className="w-3 h-3" />
+                          Show Credential
+                        </a>
+                      )}
+                      
+                      {cert.image && (
+                        <button
+                          onClick={() => setSelectedCertificate(cert)}
+                          className="inline-flex items-center gap-1 text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 text-sm font-medium transition-colors duration-300"
+                        >
+                          <Eye className="w-3 h-3" />
+                          View Certificate
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <h4 className="font-bold text-gray-900 dark:text-white mb-2">
-                  {cert.name}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
-                  {cert.issuer}
-                </p>
-                <p className="text-blue-600 dark:text-blue-400 font-medium text-sm">
-                  {cert.date}
-                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Certificate Image Modal */}
+      {selectedCertificate && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+          <div className="relative bg-white dark:bg-gray-800 rounded-xl max-w-4xl max-h-[90vh] overflow-hidden">
+            {/* Modal Header */}
+            <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                  {selectedCertificate.name}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {selectedCertificate.issuer} • {selectedCertificate.date}
+                </p>
+              </div>
+              <button
+                onClick={() => setSelectedCertificate(null)}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
+              >
+                <X className="w-5 h-5 text-gray-500" />
+              </button>
+            </div>
+            
+            {/* Modal Content */}
+            <div className="p-4 max-h-[calc(90vh-80px)] overflow-auto">
+              <div className="relative w-full h-auto">
+                <Image
+                  src={selectedCertificate.image}
+                  alt={`${selectedCertificate.name} Certificate`}
+                  width={800}
+                  height={600}
+                  className="w-full h-auto rounded-lg shadow-lg"
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              
+              {/* Certificate Details */}
+              <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div className="grid md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p className="font-semibold text-gray-900 dark:text-white mb-1">Issuer</p>
+                    <p className="text-gray-600 dark:text-gray-300">{selectedCertificate.issuer}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 dark:text-white mb-1">Date</p>
+                    <p className="text-gray-600 dark:text-gray-300">{selectedCertificate.date}</p>
+                  </div>
+                  {selectedCertificate.credentialId && (
+                    <div className="md:col-span-2">
+                      <p className="font-semibold text-gray-900 dark:text-white mb-1">Credential ID</p>
+                      <p className="text-gray-600 dark:text-gray-300">{selectedCertificate.credentialId}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

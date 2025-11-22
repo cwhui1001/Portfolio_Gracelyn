@@ -3,18 +3,26 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { ExternalLink, Github, Code, Smartphone, Globe, Database } from 'lucide-react'
+import { ExternalLink, Github, Code, Smartphone, Globe, Database, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import Image from 'next/image'
 
 const projects = [
   {
     title: 'SAP Invoice Management Portal',
     description: 'A comprehensive invoice management system built with SAP ERP integration. Features full-stack development with modern React frontend and robust Node.js backend, utilizing Supabase for data management.',
-    technologies: ['React', 'Node.js', 'Tailwind CSS', 'Supabase', 'C#', 'Blazor', 'FinTech', 'SAP ERP'],
+    technologies: ['React', 'Node.js', 'Tailwind CSS', 'Supabase', 'C#', 'Blazor', 'FinTech', 'SAP ERP', 'n8n', 'OCR'],
     features: [
       'SAP ERP integration',
+      'OCR-based invoice data extraction',
+      'n8n workflow automation',
       'Real-time invoice processing',
       'Full-stack development',
       'Modern responsive design'
+    ],
+    images: [
+      '/images/projects/sap-invoice-management/dashboard.png',
+      '/images/projects/sap-invoice-management/invoice-list.jpg',
+      '/images/projects/sap-invoice-management/detail-view.jpg'
     ],
     category: 'Full Stack',
     icon: <Globe className="w-6 h-6" />,
@@ -32,6 +40,11 @@ const projects = [
       'Automated support queries',
       'Real-time assistance'
     ],
+    images: [
+      '/images/projects/sap-support-chatbot/chat-interface.jpg',
+      '/images/projects/sap-support-chatbot/admin-panel.jpg',
+      '/images/projects/sap-support-chatbot/analytics.jpg'
+    ],
     category: 'AI',
     icon: <Code className="w-6 h-6" />,
     gradient: 'from-green-500 to-teal-600',
@@ -47,6 +60,12 @@ const projects = [
       'Student support features',
       'Efficient course searching',
       'Multi-platform integration'
+    ],
+    images: [
+      '/images/projects/brighterus/homepage.jpg',
+      '/images/projects/brighterus/university-search.jpg',
+      '/images/projects/brighterus/course-details.jpg',
+      '/images/projects/brighterus/student-dashboard.jpg'
     ],
     category: 'Web App',
     icon: <Globe className="w-6 h-6" />,
@@ -64,6 +83,12 @@ const projects = [
       'User-friendly interface',
       'Memorial service management'
     ],
+    images: [
+      '/images/projects/timeless-tribute/home-screen.jpg',
+      '/images/projects/timeless-tribute/memorial-view.jpg',
+      '/images/projects/timeless-tribute/service-booking.jpg',
+      '/images/projects/timeless-tribute/tribute-gallery.jpg'
+    ],
     category: 'Mobile',
     icon: <Smartphone className="w-6 h-6" />,
     gradient: 'from-orange-500 to-red-600',
@@ -79,6 +104,12 @@ const projects = [
       'Body weight tracking',
       'Gym and yoga class access',
       'Customized progress charts'
+    ],
+    images: [
+      '/images/projects/huan-fitness-pal/dashboard.jpg',
+      '/images/projects/huan-fitness-pal/weight-tracker.jpg',
+      '/images/projects/huan-fitness-pal/class-schedule.jpg',
+      '/images/projects/huan-fitness-pal/progress-charts.jpg'
     ],
     category: 'Web App',
     icon: <Database className="w-6 h-6" />,
@@ -96,6 +127,11 @@ const projects = [
       'Financial planning tools',
       'Mobile optimization'
     ],
+    images: [
+      '/images/projects/myev-car-loan/calculator-screen.jpg',
+      '/images/projects/myev-car-loan/loan-results.jpg',
+      '/images/projects/myev-car-loan/car-selection.jpg'
+    ],
     category: 'Mobile',
     icon: <Smartphone className="w-6 h-6" />,
     gradient: 'from-purple-500 to-blue-600',
@@ -111,6 +147,12 @@ const projects = [
       'Daily reminders',
       'Priority management',
       'Note-taking capabilities'
+    ],
+    images: [
+      '/images/projects/mytodo/task-list.jpg',
+      '/images/projects/mytodo/add-task.jpg',
+      '/images/projects/mytodo/calendar-view.jpg',
+      '/images/projects/mytodo/notifications.jpg'
     ],
     category: 'Mobile',
     icon: <Code className="w-6 h-6" />,
@@ -128,6 +170,12 @@ const projects = [
       'Donation platform',
       'Responsive web design'
     ],
+    images: [
+      '/images/projects/sdg-climate-action/homepage.jpg',
+      '/images/projects/sdg-climate-action/climate-info.jpg',
+      '/images/projects/sdg-climate-action/events-page.jpg',
+      '/images/projects/sdg-climate-action/donation-form.jpg'
+    ],
     category: 'Web App',
     icon: <Globe className="w-6 h-6" />,
     gradient: 'from-green-500 to-blue-600',
@@ -142,10 +190,42 @@ export function Projects() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   const [activeCategory, setActiveCategory] = useState('All')
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [currentProjectImages, setCurrentProjectImages] = useState<string[]>([])
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 
     : projects.filter(project => project.category === activeCategory)
+
+  const openImageModal = (images: string[], index: number, projectTitle: string) => {
+    setCurrentProjectImages(images)
+    setCurrentImageIndex(index)
+    setSelectedImage({ src: images[index], alt: `${projectTitle} - Screenshot ${index + 1}` })
+  }
+
+  const closeImageModal = () => {
+    setSelectedImage(null)
+    setCurrentProjectImages([])
+    setCurrentImageIndex(0)
+  }
+
+  const navigateImage = (direction: 'prev' | 'next') => {
+    if (currentProjectImages.length === 0) return
+    
+    let newIndex: number
+    if (direction === 'prev') {
+      newIndex = currentImageIndex === 0 ? currentProjectImages.length - 1 : currentImageIndex - 1
+    } else {
+      newIndex = currentImageIndex === currentProjectImages.length - 1 ? 0 : currentImageIndex + 1
+    }
+    
+    setCurrentImageIndex(newIndex)
+    setSelectedImage({
+      src: currentProjectImages[newIndex],
+      alt: `Screenshot ${newIndex + 1}`
+    })
+  }
 
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800/50">
@@ -204,7 +284,7 @@ export function Projects() {
               
               <div className="p-8">
                 {/* Title and Icon */}
-                <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-4 mb-6">
                   <div className={`p-3 bg-gradient-to-r ${project.gradient} rounded-lg text-white`}>
                     {project.icon}
                   </div>
@@ -216,6 +296,87 @@ export function Projects() {
                       {project.category}
                     </span>
                   </div>
+                </div>
+
+                {/* Project Screenshots Gallery */}
+                <div className="mb-6">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Project Screenshots:</h4>
+                  
+                  {/* Main Featured Image */}
+                  <div className="mb-4">
+                    <div
+                      className="relative w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden cursor-pointer group/main shadow-md hover:shadow-xl transition-all duration-300"
+                      onClick={() => openImageModal(project.images, 0, project.title)}
+                    >
+                      <Image
+                        src={project.images[0]}
+                        alt={`${project.title} - Main Screenshot`}
+                        fill
+                        className="object-cover group-hover/main:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover/main:bg-black/10 transition-colors duration-300" />
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/main:opacity-100 transition-opacity duration-300">
+                        <div className="bg-white/95 dark:bg-gray-900/95 rounded-full p-3 shadow-lg">
+                          <ExternalLink className="w-5 h-5 text-gray-900 dark:text-white" />
+                        </div>
+                      </div>
+                      {/* Image Badge */}
+                      <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded-full text-xs font-medium text-gray-900 dark:text-white">
+                        Main View
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Thumbnail Gallery */}
+                  {project.images.length > 1 && (
+                    <div className="grid grid-cols-3 gap-3">
+                      {project.images.slice(1).map((image, imageIndex) => (
+                        <div
+                          key={imageIndex + 1}
+                          className="relative aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden cursor-pointer group/thumb shadow-sm hover:shadow-md transition-all duration-300"
+                          onClick={() => openImageModal(project.images, imageIndex + 1, project.title)}
+                        >
+                          <Image
+                            src={image}
+                            alt={`${project.title} - Screenshot ${imageIndex + 2}`}
+                            fill
+                            className="object-cover group-hover/thumb:scale-110 transition-transform duration-400"
+                            sizes="(max-width: 768px) 33vw, 20vw"
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover/thumb:bg-black/20 transition-colors duration-300" />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300">
+                            <div className="bg-white/90 dark:bg-gray-900/90 rounded-full p-2">
+                              <ExternalLink className="w-3 h-3 text-gray-900 dark:text-white" />
+                            </div>
+                          </div>
+                          {/* Thumbnail Number */}
+                          <div className="absolute top-2 right-2 bg-black/60 text-white px-1.5 py-0.5 rounded text-xs font-medium">
+                            {imageIndex + 2}
+                          </div>
+                        </div>
+                      ))}
+                      
+                      {/* View All Button if more than 4 images */}
+                      {project.images.length > 4 && (
+                        <div
+                          className="relative aspect-video bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg cursor-pointer group/viewall shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center"
+                          onClick={() => openImageModal(project.images, 1, project.title)}
+                        >
+                          <div className="text-center text-white">
+                            <ExternalLink className="w-6 h-6 mx-auto mb-1" />
+                            <span className="text-xs font-medium">
+                              +{project.images.length - 4} more
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Description */}
@@ -291,6 +452,64 @@ export function Projects() {
           ))}
         </div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={closeImageModal}
+        >
+          <div className="relative max-w-4xl max-h-full" onClick={(e) => e.stopPropagation()}>
+            {/* Navigation Buttons */}
+            {currentProjectImages.length > 1 && (
+              <>
+                <button
+                  onClick={() => navigateImage('prev')}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors duration-200"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={() => navigateImage('next')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors duration-200"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+
+            {/* Close Button */}
+            <button
+              onClick={closeImageModal}
+              className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors duration-200"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Main Image */}
+            <div className="relative max-h-[80vh] max-w-full">
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                width={1200}
+                height={800}
+                className="max-h-[80vh] w-auto object-contain rounded-lg"
+                priority
+              />
+            </div>
+
+            {/* Image Counter */}
+            {currentProjectImages.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                {currentImageIndex + 1} / {currentProjectImages.length}
+              </div>
+            )}
+          </div>
+        </motion.div>
+      )}
     </section>
   )
 }
