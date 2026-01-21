@@ -1,280 +1,226 @@
 "use client"
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { useEffect, useState } from 'react'
 
 export function Hero() {
+  const { scrollY } = useScroll()
+  const y1 = useTransform(scrollY, [0, 500], [0, 200])
+  const y2 = useTransform(scrollY, [0, 500], [0, 100])
+
+  const [stars, setStars] = useState<{ id: number; x: number; y: number; size: number }[]>([])
+
+  useEffect(() => {
+    // Generate random stars
+    const newStars = Array.from({ length: 50 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+    }))
+    setStars(newStars)
+  }, [])
+
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Hero-specific floating elements */}
-      <div className="absolute inset-0 -z-10">
-        {/* Enhanced hero floating orbs */}
+      {/* Dynamic Background Elements */}
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        
+        {/* Starfield - Theme aware (white in dark mode, dark in light mode) */}
+        {stars.map((star) => (
+          <motion.div
+            key={star.id}
+            className="absolute bg-foreground rounded-full opacity-0"
+            style={{
+              left: `${star.x}%`,
+              top: `${star.y}%`,
+              width: star.size,
+              height: star.size,
+            }}
+            animate={{
+              opacity: [0, 0.7, 0],
+              scale: [0.5, 1, 0.5],
+            }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+
+        {/* Shooting Stars - Theme aware */}
+        <div className="absolute inset-0">
+          {[...Array(3)].map((_, i) => (
+            <motion.div
+              key={`meteor-${i}`}
+              className="absolute h-0.5 w-0.5 bg-foreground rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.1)]"
+              style={{
+                top: Math.random() * 50 + '%',
+                left: Math.random() * 100 + '%',
+              }}
+              animate={{
+                x: [-100, 300],
+                y: [-100, 300],
+                opacity: [0, 1, 0],
+                scale: [0, 1, 0],
+                width: [0, 100, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 4 + Math.random() * 2,
+                ease: "linear",
+              }}
+            >
+              <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[50px] h-[1px] bg-gradient-to-r from-transparent to-foreground" />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Main Gradient Orb (Top Left) */}
         <motion.div
+          style={{ y: y1 }}
           animate={{
-            scale: [1, 1.6, 0.8, 1.3, 1],
-            rotate: [0, 180, 360, 270, 0],
-            x: [0, 120, -80, 100, 0],
-            y: [0, -80, 60, -50, 0],
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+            rotate: [0, 90, 0],
           }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'easeInOut'
-          }}
-          className="absolute top-1/4 -left-32 w-96 h-96 rounded-full blur-3xl opacity-30 dark:opacity-50 transition-opacity duration-500"
-          style={{
-            background: 'conic-gradient(from 0deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.3), rgba(16, 185, 129, 0.3), rgba(59, 130, 246, 0.3))'
-          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-radial from-primary/40 via-secondary/20 to-transparent blur-3xl"
         />
         
+        {/* Secondary Orb (Bottom Right) */}
         <motion.div
+          style={{ y: y2 }}
           animate={{
-            scale: [1, 1.8, 0.6, 1.4, 1],
-            rotate: [360, 180, 0, 90, 360],
-            x: [0, -180, 100, -150, 0],
-            y: [0, 100, -60, 80, 0],
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2],
+            rotate: [0, -45, 0],
           }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'easeInOut'
-          }}
-          className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full blur-3xl opacity-30 dark:opacity-50 transition-opacity duration-500"
-          style={{
-            background: 'conic-gradient(from 180deg, rgba(147, 51, 234, 0.3), rgba(59, 130, 246, 0.3), rgba(16, 185, 129, 0.3), rgba(236, 72, 153, 0.3), rgba(147, 51, 234, 0.3))'
-          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-radial from-secondary/40 via-primary/20 to-transparent blur-3xl"
         />
 
-        {/* Spectacular floating elements */}
+        {/* Floating Accent Orbs */}
         <motion.div
           animate={{
-            scale: [1, 1.5, 0.7, 1.2, 1],
-            rotate: [0, -180, -360, -90, 0],
-            x: [0, 120, -60, 80, 0],
-            y: [0, -50, 80, -30, 0],
+            y: [0, -100, 0],
+            x: [0, 50, 0],
+            opacity: [0.3, 0.6, 0.3],
           }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'easeInOut'
-          }}
-          className="absolute top-1/2 left-1/4 w-80 h-80 rounded-full blur-3xl opacity-40 dark:opacity-60 transition-opacity duration-500"
-          style={{
-            background: 'radial-gradient(ellipse 60% 40%, rgba(236, 72, 153, 0.3), rgba(251, 146, 60, 0.3), rgba(16, 185, 129, 0.3))'
-          }}
-        />
-        
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 0.8, 1.1, 1],
-            rotate: [0, 240, 480, 120, 0],
-            x: [0, -80, 120, -60, 0],
-            y: [0, 60, -80, 40, 0],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'easeInOut'
-          }}
-          className="absolute top-1/3 right-1/4 w-88 h-88 rounded-full blur-3xl opacity-35 dark:opacity-55 transition-opacity duration-500"
-          style={{
-            background: 'radial-gradient(ellipse 40% 60%, rgba(16, 185, 129, 0.3), rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3))'
-          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-accent/30 blur-[100px]"
         />
 
-        {/* Dynamic mesh gradient overlay */}
+        {/* Mesh Overlay with Parallax */}
         <motion.div 
-          className="absolute inset-0 opacity-25 dark:opacity-35 transition-opacity duration-500"
-          animate={{
-            background: [
-              "radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.2), transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2), transparent 50%), radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.2), transparent 50%)",
-              "radial-gradient(circle at 60% 70%, rgba(120, 119, 198, 0.2), transparent 50%), radial-gradient(circle at 30% 80%, rgba(255, 119, 198, 0.2), transparent 50%), radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.2), transparent 50%)",
-              "radial-gradient(circle at 80% 30%, rgba(120, 119, 198, 0.2), transparent 50%), radial-gradient(circle at 20% 60%, rgba(255, 119, 198, 0.2), transparent 50%), radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.2), transparent 50%)",
-              "radial-gradient(circle at 40% 20%, rgba(120, 119, 198, 0.2), transparent 50%), radial-gradient(circle at 70% 70%, rgba(255, 119, 198, 0.2), transparent 50%), radial-gradient(circle at 30% 60%, rgba(59, 130, 246, 0.2), transparent 50%)"
-            ]
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'easeInOut'
-          }}
-        />
-
-        {/* Prismatic light streaks */}
-        <motion.div
-          className="absolute inset-0 opacity-20 dark:opacity-30"
-          animate={{
-            background: [
-              "linear-gradient(45deg, transparent 0%, rgba(147, 51, 234, 0.15) 25%, transparent 50%, rgba(59, 130, 246, 0.15) 75%, transparent 100%)",
-              "linear-gradient(90deg, transparent 0%, rgba(16, 185, 129, 0.15) 25%, transparent 50%, rgba(236, 72, 153, 0.15) 75%, transparent 100%)",
-              "linear-gradient(135deg, transparent 0%, rgba(245, 158, 11, 0.15) 25%, transparent 50%, rgba(147, 51, 234, 0.15) 75%, transparent 100%)",
-              "linear-gradient(180deg, transparent 0%, rgba(59, 130, 246, 0.15) 25%, transparent 50%, rgba(16, 185, 129, 0.15) 75%, transparent 100%)"
-            ]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            repeatType: 'loop',
-            ease: 'linear'
-          }}
-          style={{
-            filter: 'blur(20px)'
-          }}
+          style={{ y: y1 }}
+          className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20 [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" 
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-6"
+          className="space-y-8"
         >
           {/* Greeting */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg text-gray-600 dark:text-gray-400 font-medium"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-4 hover:bg-primary/20 transition-colors cursor-default"
           >
-            Hello, I'm
-          </motion.p>
+            <span className="text-sm font-medium text-primary flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Hello, I'm
+            </span>
+          </motion.div>
 
-          {/* Name with animated gradient */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="relative text-5xl md:text-7xl font-bold"
-          >
-            <motion.span
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="bg-gradient-to-r from-blue-600 via-purple-600 via-pink-500 to-blue-600 bg-[length:200%_auto] bg-clip-text text-transparent animate-pulse"
-              style={{
-                backgroundSize: '200% auto',
-              }}
-            >
-              Gracelyn Chong
-            </motion.span>
-          </motion.h1>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="relative text-2xl md:text-3xl font-semibold"
-          >
-            <motion.span
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: 1,
-              }}
-              className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 bg-[length:200%_auto] bg-clip-text text-transparent"
-              style={{
-                backgroundSize: '200% auto',
-              }}
-            >
-              Wen Hui
-            </motion.span>
-          </motion.h2>
+          {/* Name with enhanced gradient */}
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
+            <span className="text-gradient drop-shadow-sm">Gracelyn Chong</span>
+            <br />
+            <span className="text-foreground mt-2 block text-4xl md:text-6xl font-light tracking-wide">Wen Hui</span>
+          </h1>
 
           {/* Headline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
-          >
-            Passionate Software Developer & Technology Enthusiast
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Passionate Software Developer & Technology Enthusiast.
             <br />
-            <span className="text-lg text-gray-500 dark:text-gray-500">
-              Building innovative digital solutions with modern technologies
-            </span>
-          </motion.p>
+            Building <span className="text-primary font-semibold relative inline-block">
+              innovative
+              <motion.span 
+                className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 1, delay: 1 }}
+              />
+            </span> digital solutions.
+          </p>
 
-          {/* CTA Buttons with Enhanced Gradients */}
+          {/* CTA Buttons - Using Glass and Gradients */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8"
           >
             <Link
               href="#experience"
-              className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              className="group relative px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] hover:scale-105 active:scale-95"
             >
-              View Experience
-              <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform duration-300">
-                →
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              <span className="relative flex items-center gap-2">
+                View Experience
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
               </span>
             </Link>
 
             <Link
               href="#contact"
-              className="group border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
+              className="group px-8 py-4 rounded-full font-semibold glass-card text-foreground hover:bg-secondary/20 transition-all duration-300 hover:scale-105 active:scale-95 border-primary/20 hover:border-primary/50"
             >
               Contact Me
-              <span className="inline-block ml-2 transform group-hover:translate-x-1 transition-transform duration-300">
-                →
-              </span>
             </Link>
           </motion.div>
 
-          {/* Social Links */}
+          {/* Social Links - Glass Effect */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex justify-center space-x-6 pt-8"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex justify-center gap-6 pt-10"
           >
-            <Link
-              href="https://www.linkedin.com/in/gracelyn-chong-wen-hui-015a80271/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900 rounded-full transition-all duration-300 transform hover:scale-110"
-            >
-              <Linkedin className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400" />
-            </Link>
-            <Link
-              href="https://github.com/cwhui1001"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-all duration-300 transform hover:scale-110"
-            >
-              <Github className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200" />
-            </Link>
-            <Link
-              href="https://wa.me/601123137816"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-green-100 dark:hover:bg-green-900 rounded-full transition-all duration-300 transform hover:scale-110"
-            >
-              <MessageCircle className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400" />
-            </Link>
-            <Link
-              href="mailto:cwenhui10@gmail.com"
-              className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-red-100 dark:hover:bg-red-900 rounded-full transition-all duration-300 transform hover:scale-110"
-            >
-              <Mail className="w-6 h-6 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400" />
-            </Link>
+            {[
+              { href: "https://www.linkedin.com/in/gracelyn-chong-wen-hui-015a80271/", icon: Linkedin, color: "hover:text-blue-500 hover:border-blue-500/50" },
+              { href: "https://github.com/cwhui1001", icon: Github, color: "hover:text-purple-500 hover:border-purple-500/50" },
+              { href: "https://wa.me/601123137816", icon: MessageCircle, color: "hover:text-green-500 hover:border-green-500/50" },
+              { href: "mailto:cwenhui10@gmail.com", icon: Mail, color: "hover:text-red-500 hover:border-red-500/50" }
+            ].map((social, index) => (
+              <Link
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "p-4 rounded-full glass-card transition-all duration-300 hover:scale-110 border border-white/10 hover:shadow-lg",
+                  social.color
+                )}
+              >
+                <social.icon className="w-6 h-6" />
+              </Link>
+            ))}
           </motion.div>
         </motion.div>
 
@@ -282,16 +228,16 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          transition={{ duration: 1, delay: 1.5 }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-gray-500 dark:text-gray-400"
+            className="text-muted-foreground flex flex-col items-center gap-2"
           >
-            <span className="text-sm mb-2">Scroll down</span>
-            <ChevronDown className="w-6 h-6" />
+            <span className="text-xs uppercase tracking-widest opacity-50">Scroll</span>
+            <ChevronDown className="w-6 h-6 opacity-50" />
           </motion.div>
         </motion.div>
       </div>

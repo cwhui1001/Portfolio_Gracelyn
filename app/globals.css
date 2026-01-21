@@ -2,296 +2,156 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 248, 250, 252;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 15, 23, 42;
-    --background-end-rgb: 30, 41, 59;
+    /* Light Mode - Sophisticated & Clean */
+    --background: 210 40% 98%; /* Soft white/blue */
+    --foreground: 222 47% 11%; /* Deep navy */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 221 83% 53%; /* Vivid Blue */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 262 83% 58%; /* Soft Purple */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark Mode - Deep Space Cosmic */
+    --background: 222 47% 11%; /* Deepest Navy/Black */
+    --foreground: 210 40% 98%;
+
+    --card: 217 33% 17%; /* Darker slate */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%; /* Electric Blue */
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 262 83% 58%; /* Electric Purple */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  overflow-x: hidden;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased transition-colors duration-300 selection:bg-primary/30 selection:text-primary;
+  }
 }
 
-/* Enhanced scrollbar styling */
+@layer utilities {
+  .glass {
+    @apply bg-background/60 backdrop-blur-lg border border-white/10 shadow-lg;
+  }
+
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-gradient;
+  }
+
+  /* Complex Gradients */
+  .bg-gradient-cosmic {
+    @apply bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500;
+  }
+
+  .bg-gradient-ocean {
+    @apply bg-gradient-to-br from-cyan-500 via-blue-500 to-indigo-500;
+  }
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100/50 dark:bg-gray-800/50 backdrop-blur-sm;
+  @apply bg-background;
 }
-
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300/60 dark:bg-gray-600/60 rounded-full backdrop-blur-sm;
-  transition: background-color 0.3s ease;
+  @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50 transition-colors;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400/80 dark:bg-gray-500/80;
-}
-
-/* Smooth transitions for theme changes and interactions */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-}
-
-/* Glass morphism effect for cards and containers */
-.glass-effect {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.8);
-}
-
-.dark .glass-effect {
-  background: rgba(30, 41, 59, 0.8);
-}
-
-/* Enhanced text shadow for better readability over animated backgrounds */
-.text-shadow {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.dark .text-shadow {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-/* Subtle glow effects */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+/* Animations */
+@keyframes gradient-xy {
+  0% {
+    background-position: 0% 50%;
   }
   50% {
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.2), 0 0 40px rgba(168, 85, 247, 0.1);
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-.glow-animation {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-/* Floating animation for interactive elements */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
+  0%,
+  100% {
+    transform: translateY(0);
   }
   50% {
     transform: translateY(-10px);
   }
 }
 
-.float-animation {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Shimmer effect for loading states */
-@keyframes shimmer {
-  0% {
-    background-position: -468px 0;
-  }
+@keyframes pulse-soft {
+  0%,
   100% {
-    background-position: 468px 0;
-  }
-}
-
-.shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 400% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-.dark .shimmer {
-  background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%);
-  background-size: 400% 100%;
-}
-
-/* ✨ WOW SPECTACULAR ANIMATIONS ✨ */
-
-/* Spectacular rainbow glow effects */
-@keyframes pulse-rainbow {
-  0%, 100% {
-    box-shadow: 
-      0 0 20px rgba(99, 102, 241, 0.3),
-      0 0 40px rgba(147, 51, 234, 0.2),
-      0 0 60px rgba(236, 72, 153, 0.1);
-  }
-  25% {
-    box-shadow: 
-      0 0 25px rgba(147, 51, 234, 0.4),
-      0 0 50px rgba(236, 72, 153, 0.3),
-      0 0 75px rgba(16, 185, 129, 0.2);
+    opacity: 1;
   }
   50% {
-    box-shadow: 
-      0 0 30px rgba(236, 72, 153, 0.3),
-      0 0 60px rgba(16, 185, 129, 0.2),
-      0 0 90px rgba(245, 158, 11, 0.1);
-  }
-  75% {
-    box-shadow: 
-      0 0 35px rgba(16, 185, 129, 0.4),
-      0 0 70px rgba(245, 158, 11, 0.3),
-      0 0 105px rgba(99, 102, 241, 0.2);
-  }
-}
-
-.rainbow-glow {
-  animation: pulse-rainbow 6s ease-in-out infinite;
-}
-
-/* Dynamic floating with spiral rotation */
-@keyframes float-spiral {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-15px) rotate(90deg);
-  }
-  50% {
-    transform: translateY(-30px) rotate(180deg);
-  }
-  75% {
-    transform: translateY(-15px) rotate(270deg);
-  }
-}
-
-.spiral-float {
-  animation: float-spiral 8s ease-in-out infinite;
-}
-
-/* Prismatic shimmer effect */
-@keyframes prismatic-shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.prismatic-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%, 
-    rgba(99, 102, 241, 0.2) 20%, 
-    rgba(147, 51, 234, 0.3) 30%,
-    rgba(236, 72, 153, 0.3) 40%,
-    rgba(16, 185, 129, 0.3) 60%,
-    rgba(245, 158, 11, 0.2) 70%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: prismatic-shimmer 3s ease-in-out infinite;
-}
-
-/* Aurora wave effect */
-@keyframes aurora-wave {
-  0%, 100% {
-    transform: translateX(-50%) translateY(-50%) rotate(0deg) scale(1);
-    opacity: 0.3;
-  }
-  25% {
-    transform: translateX(-60%) translateY(-40%) rotate(90deg) scale(1.2);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateX(-40%) translateY(-60%) rotate(180deg) scale(0.8);
-    opacity: 0.4;
-  }
-  75% {
-    transform: translateX(-70%) translateY(-30%) rotate(270deg) scale(1.1);
     opacity: 0.7;
   }
 }
 
-.aurora-wave {
-  animation: aurora-wave 15s ease-in-out infinite;
+.animate-gradient {
+  animation: gradient-xy 6s linear infinite;
 }
 
-/* Cosmic particle drift */
-@keyframes cosmic-drift {
-  0% {
-    transform: translate(0, 0) scale(0.5);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(100vw, -100vh) scale(1.2);
-    opacity: 0;
-  }
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
-.cosmic-particle {
-  animation: cosmic-drift 20s linear infinite;
-}
-
-/* Holographic text effect */
-@keyframes holographic {
-  0%, 100% {
-    text-shadow: 
-      0 0 5px rgba(59, 130, 246, 0.5),
-      0 0 10px rgba(147, 51, 234, 0.3),
-      0 0 15px rgba(236, 72, 153, 0.2);
-  }
-  25% {
-    text-shadow: 
-      0 0 10px rgba(147, 51, 234, 0.6),
-      0 0 20px rgba(236, 72, 153, 0.4),
-      0 0 30px rgba(16, 185, 129, 0.2);
-  }
-  50% {
-    text-shadow: 
-      0 0 15px rgba(236, 72, 153, 0.5),
-      0 0 30px rgba(16, 185, 129, 0.3),
-      0 0 45px rgba(245, 158, 11, 0.2);
-  }
-  75% {
-    text-shadow: 
-      0 0 20px rgba(16, 185, 129, 0.6),
-      0 0 40px rgba(245, 158, 11, 0.4),
-      0 0 60px rgba(59, 130, 246, 0.2);
-  }
-}
-
-.holographic-text {
-  animation: holographic 4s ease-in-out infinite;
-}
-
-/* Enhanced glass morphism with spectacular effects */
-.glass-effect {
-  backdrop-filter: blur(20px) saturate(180%);
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-.dark .glass-effect {
-  background: rgba(30, 41, 59, 0.85);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-}
-
-.glass-effect:hover {
-  backdrop-filter: blur(25px) saturate(200%);
-  transform: translateY(-2px);
-  box-shadow: 
-    0 10px 40px rgba(0, 0, 0, 0.1),
-    0 0 20px rgba(99, 102, 241, 0.1);
-}
-
-.dark .glass-effect:hover {
-  box-shadow: 
-    0 10px 40px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(147, 51, 234, 0.2);
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
 }

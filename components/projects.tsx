@@ -228,7 +228,7 @@ export function Projects() {
   }
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800/50">
+    <section id="projects" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -237,11 +237,11 @@ export function Projects() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Featured Projects
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="text-gradient">Featured Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
-          <p className="text-xl text-gray-600 dark:text-gray-400 mt-6 max-w-3xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
+          <p className="text-xl text-muted-foreground mt-6 max-w-3xl mx-auto">
             A showcase of my recent work, demonstrating proficiency across various technologies 
             and problem-solving approaches.
           </p>
@@ -258,10 +258,10 @@ export function Projects() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 border ${
                 activeCategory === category
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 border border-gray-200 dark:border-gray-700'
+                  ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25'
+                  : 'bg-background/50 text-muted-foreground hover:text-primary hover:border-primary/50 border-input'
               }`}
             >
               {category}
@@ -277,7 +277,7 @@ export function Projects() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
+              className="group glass-card rounded-xl overflow-hidden"
             >
               {/* Project Header */}
               <div className={`h-2 bg-gradient-to-r ${project.gradient}`} />

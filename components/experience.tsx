@@ -55,7 +55,7 @@ export function Experience() {
   const isInView = useInView(ref, { once: true })
 
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-gray-900">
+    <section id="experience" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -64,11 +64,11 @@ export function Experience() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Professional Experience
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="text-gradient">Professional Experience</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full" />
-          <p className="text-xl text-gray-600 dark:text-gray-400 mt-6 max-w-3xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
+          <p className="text-xl text-muted-foreground mt-6 max-w-3xl mx-auto">
             My journey through various roles has shaped me into a well-rounded developer with 
             experience across different technologies and team environments.
           </p>
@@ -76,7 +76,7 @@ export function Experience() {
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-600 to-purple-600 transform md:-translate-x-1/2" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary to-secondary transform md:-translate-x-1/2" />
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
@@ -90,36 +90,36 @@ export function Experience() {
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transform md:-translate-x-1/2 z-10">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 animate-ping opacity-20" />
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-r from-primary to-secondary rounded-full transform md:-translate-x-1/2 z-10">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary animate-ping opacity-20" />
                 </div>
 
                 {/* Content */}
                 <div className={`ml-12 md:ml-0 md:w-1/2 ${
                   index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
                 }`}>
-                  <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="glass-card rounded-lg p-6">
                     <div className="flex flex-wrap items-center gap-2 mb-4">
-                      <Calendar className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                      <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                      <Calendar className="w-4 h-4 text-primary" />
+                      <span className="text-sm text-primary font-medium">
                         {exp.period}
                       </span>
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
                       {exp.title}
                     </h3>
 
                     <div className="flex items-center gap-2 mb-2">
-                      <Building className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                      <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                      <Building className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-lg font-semibold text-muted-foreground">
                         {exp.company}
                       </span>
                     </div>
 
                     <div className="flex items-center gap-2 mb-4">
-                      <MapPin className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-                      <span className="text-gray-600 dark:text-gray-400">
+                      <MapPin className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-muted-foreground">
                         {exp.location}
                       </span>
                     </div>
@@ -127,8 +127,8 @@ export function Experience() {
                     <ul className="space-y-2 mb-6">
                       {exp.responsibilities.map((responsibility, respIndex) => (
                         <li key={respIndex} className="flex items-start gap-2">
-                          <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mt-2 flex-shrink-0" />
-                          <span className="text-gray-600 dark:text-gray-300">
+                          <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full mt-2 flex-shrink-0" />
+                          <span className="text-muted-foreground">
                             {responsibility}
                           </span>
                         </li>
@@ -139,7 +139,7 @@ export function Experience() {
                       {exp.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium"
+                          className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20"
                         >
                           {tech}
                         </span>

@@ -1,17 +1,17 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Outfit } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { AnimatedBackground } from '@/components/animated-background'
 
-const inter = Inter({ subsets: ['latin'] })
+const outfit = Outfit({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Gracelyn's Portfolio",
-  description: 'Professional portfolio of Gracelyn Chong Wen Hui - Software Developer & Technology Enthusiast',
-  keywords: ['portfolio', 'software developer', 'web development', 'Next.js', 'React'],
+  title: "Gracelyn | Creative Developer",
+  description: 'Portfolio of Gracelyn Chong Wen Hui - Crafting digital experiences with modern web technologies.',
+  keywords: ['portfolio', 'software developer', 'web development', 'Next.js', 'React', 'Creative Developer'],
   authors: [{ name: 'Gracelyn Chong Wen Hui' }],
 }
 
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={outfit.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
