@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { ExternalLink, Github, Code, Smartphone, Globe, Database, ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { ExternalLink, Github, Code, Smartphone, Globe, Database, ChevronLeft, ChevronRight, X, Activity, Utensils, Cpu, FileText } from 'lucide-react'
 import Image from 'next/image'
 
 const projects = [
@@ -26,8 +26,8 @@ const projects = [
       '/images/projects/health-tracker/mood.png'
     ],
     categories: ['Full Stack'],
-    icon: <Globe className="w-6 h-6" />,
-    gradient: 'from-blue-500 to-purple-600',
+    icon: <Activity className="w-6 h-6" />,
+    gradient: 'from-rose-500 to-pink-600',
     github: 'https://github.com/sunwaydcis/final-project-cwhui1001', // Private/Enterprise project
     demo: '#' // Private/Enterprise project
   },
@@ -50,8 +50,8 @@ const projects = [
       '/images/projects/eat-smart-ai/daily-summary.png'
     ],
     categories: ['Full Stack', 'AI'],
-    icon: <Globe className="w-6 h-6" />,
-    gradient: 'from-blue-500 to-purple-600',
+    icon: <Utensils className="w-6 h-6" />,
+    gradient: 'from-emerald-500 to-green-600',
     github: 'https://github.com/Aiyern30/nutrition-tracker', 
     demo: 'https://eat-smart-ai.vercel.app/' 
   },
@@ -73,8 +73,8 @@ const projects = [
       '/images/projects/smart-bin-system/arduinoide.png' 
     ],
     categories: ['IOT'],
-    icon: <Globe className="w-6 h-6" />,
-    gradient: 'from-blue-500 to-purple-600',
+    icon: <Cpu className="w-6 h-6" />,
+    gradient: 'from-amber-500 to-orange-600',
     github: 'https://github.com/cwhui1001/IOT-SmartBin',
     demo: 'https://youtu.be/EmBA_GKYHOo'
   },
@@ -97,8 +97,8 @@ const projects = [
       '/images/projects/sap-invoice-management/upload-invoices.png'
     ],
     categories: ['Full Stack'],
-    icon: <Globe className="w-6 h-6" />,
-    gradient: 'from-blue-500 to-purple-600',
+    icon: <FileText className="w-6 h-6" />,
+    gradient: 'from-indigo-500 to-violet-600',
     github: 'https://github.com/cwhui1001/SAPInvoiceOCR', // Private/Enterprise project
     demo: '#' // Private/Enterprise project
   },
