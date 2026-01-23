@@ -265,60 +265,74 @@ export function Education() {
               <motion.div
                 key={index}
                 variants={item}
-                className="glass-card rounded-xl p-6 hover:translate-y-[-4px] transition-all duration-300 group"
+                className="glass-card rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300 group flex flex-col cursor-pointer"
+                onClick={() => setSelectedCertificate(cert)}
               >
-                <div className="flex items-start gap-4">
-                  <div className="text-4xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0 bg-background/50 p-2 rounded-lg">
-                    {cert.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-foreground mb-2 leading-tight group-hover:text-primary transition-colors">
-                      {cert.name}
-                    </h4>
-                    <p className="text-muted-foreground text-sm mb-1">
-                      {cert.issuer}
-                    </p>
-                    <p className="text-primary font-medium text-sm mb-3">
-                      {cert.date}
-                    </p>
+                {/* Certificate Image */}
+                 {cert.image && (
+                  <div className="relative w-full h-48 bg-muted/30 overflow-hidden">
+                    <Image
+                      src={cert.image}
+                      alt={cert.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
-                    {cert.skills && (
-                      <div className="mb-4">
-                        <div className="flex flex-wrap gap-1">
-                          {cert.skills.map((skill, skillIndex) => (
-                            <span
-                              key={skillIndex}
-                              className="px-2 py-1 bg-secondary/10 text-secondary rounded text-xs border border-secondary/20"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
+                    {/* Overlay Icon */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-background/80 backdrop-blur-sm p-3 rounded-full text-primary shadow-lg">
+                        <Eye className="w-6 h-6" />
                       </div>
-                    )}
-                    
-                    <div className="flex flex-wrap gap-3 pt-2 border-t border-border/50">
-                      {cert.credentialUrl && cert.credentialUrl !== '#' && (
-                        <a
-                          href={cert.credentialUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-medium transition-colors"
-                        >
-                          <Award className="w-3 h-3" />
-                          Show Credential
-                        </a>
+                    </div>
+                  </div>
+                )}
+
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="flex items-start gap-4 flex-1">
+                    <div className="text-4xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0 bg-background/50 p-2 rounded-lg">
+                      {cert.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-foreground mb-2 leading-tight group-hover:text-primary transition-colors">
+                        {cert.name}
+                      </h4>
+                      <p className="text-muted-foreground text-sm mb-1">
+                        {cert.issuer}
+                      </p>
+                      <p className="text-primary font-medium text-sm mb-3">
+                        {cert.date}
+                      </p>
+                      
+                      {cert.skills && (
+                        <div className="mb-4">
+                          <div className="flex flex-wrap gap-1">
+                            {cert.skills.map((skill, skillIndex) => (
+                              <span
+                                key={skillIndex}
+                                className="px-2 py-1 bg-secondary/10 text-secondary rounded text-xs border border-secondary/20"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       )}
                       
-                      {cert.image && (
-                        <button
-                          onClick={() => setSelectedCertificate(cert)}
-                          className="inline-flex items-center gap-1 text-secondary hover:text-secondary/80 text-sm font-medium transition-colors"
-                        >
-                          <Eye className="w-3 h-3" />
-                          View Certificate
-                        </button>
-                      )}
+                      <div className="flex flex-wrap gap-3 pt-2 border-t border-border/50 mt-auto">
+                        {cert.credentialUrl && cert.credentialUrl !== '#' && (
+                          <a
+                            href={cert.credentialUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-medium transition-colors hover:underline"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Award className="w-3 h-3" />
+                            Show Credential
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -330,64 +344,41 @@ export function Education() {
 
       {/* Certificate Image Modal uses native glassmorphism too */}
       {selectedCertificate && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4" onClick={() => setSelectedCertificate(null)}>
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4" onClick={() => setSelectedCertificate(null)}>
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative glass-card w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-xl border-primary/20 shadow-2xl"
+            className="relative flex flex-col bg-[#0a0a0a] rounded-2xl border border-white/10 shadow-2xl max-w-[95vw] max-h-[95vh] w-auto h-auto overflow-hidden"
           >
-            {/* Modal Header */}
-            <div className="flex justify-between items-center p-4 border-b border-border/50">
-              <div>
-                <h3 className="text-lg font-bold text-foreground">
+            {/* Modal Header - constrained width matches image */}
+            <div className="flex justify-between items-center p-4 border-b border-white/10 bg-[#0a0a0a] z-10 shrink-0">
+              <div className="mr-8">
+                <h3 className="text-lg md:text-xl font-bold text-white leading-tight">
                   {selectedCertificate.name}
                 </h3>
-                <p className="text-sm text-muted-foreground">
-                  {selectedCertificate.issuer} • {selectedCertificate.date}
+                <p className="text-sm text-gray-400 mt-1 font-medium">
+                  {selectedCertificate.issuer} <span className="mx-1 text-gray-600">•</span> {selectedCertificate.date}
                 </p>
               </div>
               <button
                 onClick={() => setSelectedCertificate(null)}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
+                className="p-2 hover:bg-white/10 rounded-full transition-colors duration-200 shrink-0 group"
               >
-                <X className="w-5 h-5 text-muted-foreground" />
+                <X className="w-6 h-6 text-gray-400 group-hover:text-white" />
               </button>
             </div>
             
-            {/* Modal Content */}
-            <div className="p-4 max-h-[calc(90vh-80px)] overflow-auto bg-background/50">
-              <div className="relative w-full h-auto">
-                <Image
-                  src={selectedCertificate.image}
-                  alt={`${selectedCertificate.name} Certificate`}
-                  width={800}
-                  height={600}
-                  className="w-full h-auto rounded-lg shadow-lg"
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
-              
-              {/* Certificate Details */}
-              <div className="mt-4 p-4 rounded-lg bg-background/50 border border-border/50">
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <p className="font-semibold text-foreground mb-1">Issuer</p>
-                    <p className="text-muted-foreground">{selectedCertificate.issuer}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground mb-1">Date</p>
-                    <p className="text-muted-foreground">{selectedCertificate.date}</p>
-                  </div>
-                  {selectedCertificate.credentialId && (
-                    <div className="md:col-span-2">
-                      <p className="font-semibold text-foreground mb-1">Credential ID</p>
-                      <p className="text-muted-foreground">{selectedCertificate.credentialId}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
+            {/* Certificate Image Area - Shrink wrapped */}
+            <div className="relative overflow-auto flex items-center justify-center p-0 bg-black">
+               {/* Using standard img tag to allow natural shrink-wrapping of the container */}
+               {/* eslint-disable-next-line @next/next/no-img-element */}
+               <img
+                 src={selectedCertificate.image}
+                 alt={`${selectedCertificate.name} Certificate`}
+                 className="max-h-[calc(90vh-100px)] w-auto object-contain block"
+               />
             </div>
           </motion.div>
         </div>
