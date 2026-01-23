@@ -25,16 +25,63 @@ const projects = [
       '/images/projects/health-tracker/workout.png',
       '/images/projects/health-tracker/mood.png'
     ],
-    category: 'Full Stack',
+    categories: ['Full Stack'],
     icon: <Globe className="w-6 h-6" />,
     gradient: 'from-blue-500 to-purple-600',
     github: 'https://github.com/sunwaydcis/final-project-cwhui1001', // Private/Enterprise project
     demo: '#' // Private/Enterprise project
   },
   {
+    title: 'Nutrition Tracker (Eat Smart AI)',
+    description: 'A comprehensive, AI-powered nutrition management platform designed to help users reach their health goals through intelligent tracking, personalized meal planning, and detailed analysis. Built with modern web technologies and powered by the Baidu Ernie 5.0 Thinking model (with support from Ernie 4.0-8K) Large Language Model.',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Baidu AI'],
+    features: [
+      'User Dashboard',
+      'AI-powered Food Analysis',
+      'Personalized Meal Plans',
+      'Calorie Tracking',
+      'Daily Summary',
+      'AI Nutritionist'
+    ],
+    images: [
+      '/images/projects/eat-smart-ai/dashboard.png',
+      '/images/projects/eat-smart-ai/food-analyzer.png',
+      '/images/projects/eat-smart-ai/meal-planner.png',
+      '/images/projects/eat-smart-ai/daily-summary.png'
+    ],
+    categories: ['Full Stack', 'AI'],
+    icon: <Globe className="w-6 h-6" />,
+    gradient: 'from-blue-500 to-purple-600',
+    github: 'https://github.com/Aiyern30/nutrition-tracker', 
+    demo: 'https://eat-smart-ai.vercel.app/' 
+  },
+  {
+    title: 'Smart Bin System',
+    description: 'A smart waste management system that utilizes IoT technology to optimize waste collection efficiency. The system features real-time monitoring of bin levels, fire alerts, and data analytics to improve waste management operations.',
+    technologies: ['IOT', 'Arduino', 'ESP8266', 'MQTT', 'Firebase','ThingSpeak', 'HTML', 'CSS', 'JavaScript'],
+    features: [
+      'Real-time bin level monitoring',
+      'Automatic lid opening and closing',
+      'Fire Alerts notification',
+      'Data analytics',
+      'Waste management optimization'
+    ],
+    images: [
+      '/images/projects/smart-bin-system/prototype.jpeg',
+      '/images/projects/smart-bin-system/dashboard.png', 
+      '/images/projects/smart-bin-system/components.jpeg',
+      '/images/projects/smart-bin-system/arduinoide.png' 
+    ],
+    categories: ['IOT'],
+    icon: <Globe className="w-6 h-6" />,
+    gradient: 'from-blue-500 to-purple-600',
+    github: 'https://github.com/cwhui1001/IOT-SmartBin',
+    demo: 'https://youtu.be/EmBA_GKYHOo'
+  },
+  {
     title: 'SAP Invoice Management Portal',
     description: 'A comprehensive invoice management system built with SAP ERP integration. Features full-stack development with modern React frontend and robust Node.js backend, utilizing Supabase for data management.',
-    technologies: ['React', 'Node.js', 'Tailwind CSS', 'Supabase', 'C#', 'Blazor', 'FinTech', 'SAP ERP', 'n8n', 'OCR'],
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'FinTech', 'SAP ERP', 'n8n', 'OCR'],
     features: [
       'SAP ERP integration',
       'OCR-based invoice data extraction',
@@ -49,16 +96,17 @@ const projects = [
       '/images/projects/sap-invoice-management/profile-setting.png',
       '/images/projects/sap-invoice-management/upload-invoices.png'
     ],
-    category: 'Full Stack',
+    categories: ['Full Stack'],
     icon: <Globe className="w-6 h-6" />,
     gradient: 'from-blue-500 to-purple-600',
     github: 'https://github.com/cwhui1001/SAPInvoiceOCR', // Private/Enterprise project
     demo: '#' // Private/Enterprise project
   },
+  
   {
     title: 'SAP Support Chatbot',
     description: 'An intelligent AI-powered chatbot designed to provide automated support for SAP-related queries. Built with artificial intelligence capabilities to enhance user experience and reduce support response time.',
-    technologies: ['C#', 'Artificial Intelligence (AI)', 'Chatbot Development'],
+    technologies: ['C#', 'Blazor', 'Artificial Intelligence (AI)', 'Chatbot Development'],
     features: [
       'AI-powered responses',
       'SAP system integration',
@@ -68,7 +116,7 @@ const projects = [
     images: [
       '/images/projects/sap-support-chatbot/chat-interface.png'
     ],
-    category: 'AI',
+    categories: ['AI'],
     icon: <Code className="w-6 h-6" />,
     gradient: 'from-green-500 to-teal-600',
     github: 'https://github.com/cwhui1001/SAPChatbot3-', // Private/Enterprise project
@@ -90,7 +138,7 @@ const projects = [
       '/images/projects/brighterus/features.png',
       '/images/projects/brighterus/admin-dashboard.png'
     ],
-    category: 'Web App',
+    categories: ['Web App'],
     icon: <Globe className="w-6 h-6" />,
     gradient: 'from-purple-500 to-pink-600',
     github: 'https://github.com/cwhui1001/BrighterUs', // Academic project
@@ -112,7 +160,7 @@ const projects = [
       '/images/projects/timeless-tribute/memorial-view.png',
       '/images/projects/timeless-tribute/service-booking.png'
     ],
-    category: 'Mobile',
+    categories: ['Mobile'],
     icon: <Smartphone className="w-6 h-6" />,
     gradient: 'from-orange-500 to-red-600',
     github: 'https://github.com/cwhui1001/Timeless-Tribute',
@@ -131,7 +179,7 @@ const projects = [
     images: [
       '/images/projects/huan-fitness-pal/dashboard.png'
     ],
-    category: 'Web App',
+    categories: ['Web App'],
     icon: <Database className="w-6 h-6" />,
     gradient: 'from-blue-500 to-green-600',
     github: 'https://github.com/cwhui1001/huan_fitness_pal',
@@ -150,7 +198,7 @@ const projects = [
     images: [
       '/images/projects/myev-car-loan/main-screen.png'
     ],
-    category: 'Mobile',
+    categories: ['Mobile'],
     icon: <Smartphone className="w-6 h-6" />,
     gradient: 'from-purple-500 to-blue-600',
     github: 'https://github.com/cwhui1001/MyEV',
@@ -169,7 +217,7 @@ const projects = [
     images: [
       '/images/projects/mytodo/task-list.png'
     ],
-    category: 'Mobile',
+    categories: ['Mobile'],
     icon: <Code className="w-6 h-6" />,
     gradient: 'from-green-500 to-purple-600',
     github: 'https://github.com/cwhui1001/MyToDo',
@@ -191,7 +239,7 @@ const projects = [
       '/images/projects/sdg-climate-action/news.png',
       '/images/projects/sdg-climate-action/actions.png'
     ],
-    category: 'Web App',
+    categories: ['Web App'],
     icon: <Globe className="w-6 h-6" />,
     gradient: 'from-green-500 to-blue-600',
     github: 'https://github.com/cwhui1001/Climate-Action',
@@ -199,7 +247,7 @@ const projects = [
   }
 ]
 
-const categories = ['All', 'Full Stack', 'Web App', 'Mobile', 'AI']
+const categories = ['All', 'Full Stack', 'Web App', 'Mobile', 'AI', 'IOT']
 
 export function Projects() {
   const ref = useRef(null)
@@ -211,7 +259,7 @@ export function Projects() {
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 
-    : projects.filter(project => project.category === activeCategory)
+    : projects.filter(project => project.categories.includes(activeCategory))
 
   const openImageModal = (images: string[], index: number, projectTitle: string) => {
     setCurrentProjectImages(images)
@@ -308,7 +356,7 @@ export function Projects() {
                       {project.title}
                     </h3>
                     <span className="text-sm text-gray-500 dark:text-gray-400">
-                      {project.category}
+                      {project.categories.join(', ')}
                     </span>
                   </div>
                 </div>

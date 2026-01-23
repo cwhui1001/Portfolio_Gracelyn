@@ -2,43 +2,44 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
-import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle } from 'lucide-react'
+import { useRef, useState, useEffect } from 'react'
+import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle, CheckCircle } from 'lucide-react'
+import { useForm, ValidationError } from '@formspree/react'
 
 export function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
+  
+  // TODO: Replace with your actual Formspree Form ID
+  // 1. Go to https://formspree.io/
+  // 2. Create a new form
+  // 3. Copy the 8-character ID from the integration URL
+  const [state, handleSubmit] = useForm("YOUR_FORM_ID_HERE");
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Clear form after successful submission
+  useEffect(() => {
+    if (state.succeeded) {
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      })
+    }
+  }, [state.succeeded])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     })
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    })
-    setIsSubmitting(false)
-    alert('Message sent successfully! I\'ll get back to you soon.')
   }
 
   return (
@@ -151,97 +152,125 @@ export function Contact() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="glass-card rounded-xl p-8 shadow-2xl border-t border-white/10"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-primary/10 rounded-lg">
-                <MessageCircle className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground">
-                Send Me a Message
-              </h3>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="group">
-                  <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground outline-none"
-                    placeholder="Your Name"
-                  />
+            {state.succeeded ? (
+              <div className="h-full flex flex-col items-center justify-center text-center py-12 space-y-6">
+                <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-4">
+                  <CheckCircle className="w-10 h-10" />
                 </div>
-                <div className="group">
-                  <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground outline-none"
-                    placeholder="your.email@example.com"
-                  />
+                <h3 className="text-2xl font-bold text-foreground">Message Sent!</h3>
+                <p className="text-muted-foreground max-w-sm">
+                  Thank you for reaching out. I'll get back to you as soon as possible.
+                </p>
+                <button 
+                  onClick={() => window.location.reload()}
+                  className="text-primary hover:underline mt-4"
+                >
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <MessageCircle className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground">
+                    Send Me a Message
+                  </h3>
                 </div>
-              </div>
 
-              <div className="group">
-                <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
-                  Subject *
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground outline-none"
-                  placeholder="What's this about?"
-                />
-              </div>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="group">
+                      <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
+                        Name *
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground outline-none"
+                        placeholder="Your Name"
+                      />
+                      <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-sm mt-1" />
+                    </div>
+                    <div className="group">
+                      <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
+                        Email *
+                      </label>
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground outline-none"
+                        placeholder="your.email@example.com"
+                      />
+                      <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-sm mt-1" />
+                    </div>
+                  </div>
 
-              <div className="group">
-                <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
-                  Message *
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground resize-none outline-none"
-                  placeholder="Your message here..."
-                />
-              </div>
+                  <div className="group">
+                    <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
+                      Subject *
+                    </label>
+                    <input
+                      id="subject"
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground outline-none"
+                      placeholder="What's this about?"
+                    />
+                    <ValidationError prefix="Subject" field="subject" errors={state.errors} className="text-red-500 text-sm mt-1" />
+                  </div>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground font-semibold py-4 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/25"
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Send Message
-                  </>
-                )}
-              </motion.button>
-            </form>
+                  <div className="group">
+                    <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={6}
+                      className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground resize-none outline-none"
+                      placeholder="Your message here..."
+                    />
+                    <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
+                  </div>
+
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit"
+                    disabled={state.submitting}
+                    className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground font-semibold py-4 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/25"
+                  >
+                    {state.submitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Send Message
+                      </>
+                    )}
+                  </motion.button>
+                </form>
+              </>
+            )}
           </motion.div>
         </div>
       </div>
