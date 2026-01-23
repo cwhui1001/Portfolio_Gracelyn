@@ -33,7 +33,7 @@ export function About() {
               className="grid grid-rows-3 gap-8 pt-8"
             >
               <div className="glass-card p-4 rounded-xl text-center">
-                <div className="text-3xl font-bold text-primary">2+</div>
+                <div className="text-3xl font-bold text-primary">3+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="glass-card p-4 rounded-xl text-center">
@@ -41,7 +41,7 @@ export function About() {
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
               </div>
               <div className="glass-card p-4 rounded-xl text-center">
-                <div className="text-3xl font-bold text-accent-foreground">5+</div>
+                <div className="text-3xl font-bold text-accent-foreground">25+</div>
                 <div className="text-sm text-muted-foreground">Technologies</div>
               </div>
             </motion.div>
