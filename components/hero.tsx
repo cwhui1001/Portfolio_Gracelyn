@@ -90,34 +90,7 @@ export function Hero() {
           </motion.div>
         ))}
 
-        {/* Shooting Stars */}
-        <div className="absolute inset-0">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={`meteor-${i}`}
-              className="absolute h-0.5 w-0.5 bg-foreground rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.1)]"
-              style={{
-                top: Math.random() * 50 + '%',
-                left: Math.random() * 100 + '%',
-              }}
-              animate={{
-                x: [-100, 300],
-                y: [-100, 300],
-                opacity: [0, 1, 0],
-                scale: [0, 1, 0],
-                width: [0, 100, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 4 + Math.random() * 2,
-                ease: "linear",
-              }}
-            >
-              <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[50px] h-[1px] bg-gradient-to-r from-transparent to-foreground" />
-            </motion.div>
-          ))}
-        </div>
+
 
         {/* Main Gradient Orb (Top Left) */}
         <motion.div
@@ -279,21 +252,15 @@ export function Hero() {
                  * so ensuring the file is there is "backend's" (user's) responsibility.
                 */}
                 <Image
-                  src="/images/hero/ProfilePic-Cwhui.png"
+                  src="/images/hero/Cwhui-profile.jpeg"
                   alt="Profile"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                 />
               </div>
 
-               {/* Decorative orbiting dots */}
-               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full border border-dashed border-primary/20 pointer-events-none"
-                style={{ borderRadius: "62% 38% 32% 68% / 62% 32% 68% 38%" }}
-              />
+
             </div>
           </motion.div>
         </div>

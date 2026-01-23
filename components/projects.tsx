@@ -8,6 +8,30 @@ import Image from 'next/image'
 
 const projects = [
   {
+    title: 'Health Tracker',
+    description: 'A comprehensive health and wellness management application built with Scala and JavaFX. It enables users to monitor and track various aspects of their health including exercise routines, sleep patterns, mood fluctuations, and personal health data.',
+    technologies: ['Scala', 'JavaFX', 'Scalafx', 'ScalikeJDBC', 'Apache Derby'],
+    features: [
+      'User Authentication',
+      'Exercise Tracking',
+      'Sleep Monitoring',
+      'Mood Tracking',
+      'Health Alerts',
+      'User Profiles'
+    ],
+    images: [
+      '/images/projects/health-tracker/overview.png',
+      '/images/projects/health-tracker/sleep.png',
+      '/images/projects/health-tracker/workout.png',
+      '/images/projects/health-tracker/mood.png'
+    ],
+    category: 'Full Stack',
+    icon: <Globe className="w-6 h-6" />,
+    gradient: 'from-blue-500 to-purple-600',
+    github: 'https://github.com/sunwaydcis/final-project-cwhui1001', // Private/Enterprise project
+    demo: '#' // Private/Enterprise project
+  },
+  {
     title: 'SAP Invoice Management Portal',
     description: 'A comprehensive invoice management system built with SAP ERP integration. Features full-stack development with modern React frontend and robust Node.js backend, utilizing Supabase for data management.',
     technologies: ['React', 'Node.js', 'Tailwind CSS', 'Supabase', 'C#', 'Blazor', 'FinTech', 'SAP ERP', 'n8n', 'OCR'],
@@ -21,8 +45,9 @@ const projects = [
     ],
     images: [
       '/images/projects/sap-invoice-management/dashboard.png',
-      '/images/projects/sap-invoice-management/invoice-list.jpg',
-      '/images/projects/sap-invoice-management/detail-view.jpg'
+      '/images/projects/sap-invoice-management/invoice-list.png',
+      '/images/projects/sap-invoice-management/profile-setting.png',
+      '/images/projects/sap-invoice-management/upload-invoices.png'
     ],
     category: 'Full Stack',
     icon: <Globe className="w-6 h-6" />,
@@ -41,9 +66,7 @@ const projects = [
       'Real-time assistance'
     ],
     images: [
-      '/images/projects/sap-support-chatbot/chat-interface.jpg',
-      '/images/projects/sap-support-chatbot/admin-panel.jpg',
-      '/images/projects/sap-support-chatbot/analytics.jpg'
+      '/images/projects/sap-support-chatbot/chat-interface.png'
     ],
     category: 'AI',
     icon: <Code className="w-6 h-6" />,
@@ -62,10 +85,10 @@ const projects = [
       'Multi-platform integration'
     ],
     images: [
-      '/images/projects/brighterus/homepage.jpg',
-      '/images/projects/brighterus/university-search.jpg',
-      '/images/projects/brighterus/course-details.jpg',
-      '/images/projects/brighterus/student-dashboard.jpg'
+      '/images/projects/brighterus/homepage.png',
+      '/images/projects/brighterus/university-search.png',
+      '/images/projects/brighterus/features.png',
+      '/images/projects/brighterus/admin-dashboard.png'
     ],
     category: 'Web App',
     icon: <Globe className="w-6 h-6" />,
@@ -84,10 +107,10 @@ const projects = [
       'Memorial service management'
     ],
     images: [
-      '/images/projects/timeless-tribute/home-screen.jpg',
-      '/images/projects/timeless-tribute/memorial-view.jpg',
-      '/images/projects/timeless-tribute/service-booking.jpg',
-      '/images/projects/timeless-tribute/tribute-gallery.jpg'
+      '/images/projects/timeless-tribute/login.png',
+      '/images/projects/timeless-tribute/home-screen.png',
+      '/images/projects/timeless-tribute/memorial-view.png',
+      '/images/projects/timeless-tribute/service-booking.png'
     ],
     category: 'Mobile',
     icon: <Smartphone className="w-6 h-6" />,
@@ -106,10 +129,7 @@ const projects = [
       'Customized progress charts'
     ],
     images: [
-      '/images/projects/huan-fitness-pal/dashboard.jpg',
-      '/images/projects/huan-fitness-pal/weight-tracker.jpg',
-      '/images/projects/huan-fitness-pal/class-schedule.jpg',
-      '/images/projects/huan-fitness-pal/progress-charts.jpg'
+      '/images/projects/huan-fitness-pal/dashboard.png'
     ],
     category: 'Web App',
     icon: <Database className="w-6 h-6" />,
@@ -128,9 +148,7 @@ const projects = [
       'Mobile optimization'
     ],
     images: [
-      '/images/projects/myev-car-loan/calculator-screen.jpg',
-      '/images/projects/myev-car-loan/loan-results.jpg',
-      '/images/projects/myev-car-loan/car-selection.jpg'
+      '/images/projects/myev-car-loan/main-screen.png'
     ],
     category: 'Mobile',
     icon: <Smartphone className="w-6 h-6" />,
@@ -149,10 +167,7 @@ const projects = [
       'Note-taking capabilities'
     ],
     images: [
-      '/images/projects/mytodo/task-list.jpg',
-      '/images/projects/mytodo/add-task.jpg',
-      '/images/projects/mytodo/calendar-view.jpg',
-      '/images/projects/mytodo/notifications.jpg'
+      '/images/projects/mytodo/task-list.png'
     ],
     category: 'Mobile',
     icon: <Code className="w-6 h-6" />,
@@ -171,10 +186,10 @@ const projects = [
       'Responsive web design'
     ],
     images: [
-      '/images/projects/sdg-climate-action/homepage.jpg',
-      '/images/projects/sdg-climate-action/climate-info.jpg',
-      '/images/projects/sdg-climate-action/events-page.jpg',
-      '/images/projects/sdg-climate-action/donation-form.jpg'
+      '/images/projects/sdg-climate-action/homepage.png',
+      '/images/projects/sdg-climate-action/targets.png',
+      '/images/projects/sdg-climate-action/news.png',
+      '/images/projects/sdg-climate-action/actions.png'
     ],
     category: 'Web App',
     icon: <Globe className="w-6 h-6" />,

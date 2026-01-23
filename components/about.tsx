@@ -25,59 +25,12 @@ export function About() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Profile Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="relative w-80 h-80 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-20" />
-              <div className="relative w-full h-full bg-gradient-to-br from-muted to-background rounded-full flex items-center justify-center border border-primary/20 shadow-xl">
-                <div className="text-6xl text-muted-foreground">
-                  👩‍💻
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* About Text */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6"
-          >
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <p className="text-muted-foreground leading-relaxed">
-                I'm a passionate software developer with a strong foundation in modern web technologies 
-                and a keen interest in creating innovative digital solutions. My journey in technology 
-                began with a curiosity about how things work, which has evolved into a dedicated pursuit 
-                of building exceptional user experiences.
-              </p>
-              
-              <p className="text-muted-foreground leading-relaxed">
-                With experience in full-stack development, I enjoy working across the entire technology 
-                stack - from crafting intuitive user interfaces to building robust backend systems. 
-                I'm particularly drawn to projects that challenge me to learn new technologies and 
-                solve complex problems.
-              </p>
-
-              <p className="text-muted-foreground leading-relaxed">
-                When I'm not coding, you can find me exploring the latest tech trends, contributing to 
-                open-source projects, or sharing knowledge with the developer community. I believe in 
-                continuous learning and am always excited about the next opportunity to grow and make 
-                an impact through technology.
-              </p>
-            </div>
-
-            {/* Stats */}
+          {/* Stats */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="grid grid-cols-3 gap-6 pt-8"
+              className="grid grid-rows-3 gap-8 pt-8"
             >
               <div className="glass-card p-4 rounded-xl text-center">
                 <div className="text-3xl font-bold text-primary">2+</div>
@@ -92,6 +45,38 @@ export function About() {
                 <div className="text-sm text-muted-foreground">Technologies</div>
               </div>
             </motion.div>
+
+          {/* About Text */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-6"
+          >
+            <div className="prose prose-lg dark:prose-invert max-w-none space-y-8">
+              <p className="text-muted-foreground leading-relaxed">
+                I'm a passionate software developer with a strong foundation in modern web technologies 
+                and a keen interest in creating innovative digital solutions. My journey in technology 
+                began with a curiosity about how things work, which has evolved into a dedicated pursuit 
+                of building exceptional user experiences.
+              </p>
+              
+              <p className="text-muted-foreground leading-relaxed">
+                With experience in full-stack development, I enjoy working across the entire technology 
+                stack - from crafting intuitive user interfaces to building robust backend systems. 
+                I'm particularly drawn to projects that challenge me to learn new technologies and 
+                solve complex problems.
+              </p>
+              
+              <p className="text-muted-foreground leading-relaxed">
+                When I'm not coding, you can find me exploring the latest tech trends, contributing to 
+                open-source projects, or sharing knowledge with the developer community. I believe in 
+                continuous learning and am always excited about the next opportunity to grow and make 
+                an impact through technology.
+              </p>
+            </div>
+
+            
           </motion.div>
         </div>
       </div>

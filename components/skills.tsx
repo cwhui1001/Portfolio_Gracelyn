@@ -13,8 +13,8 @@ const skillCategories = [
     skills: [
       { name: 'React', level: 90 },
       { name: 'Next.js', level: 85 },
-      { name: 'Vue.js', level: 80 },
       { name: 'TypeScript', level: 85 },
+      { name: 'Blazor', level: 75 },
       { name: 'JavaScript', level: 95 },
       { name: 'HTML5', level: 98 },
       { name: 'CSS3', level: 95 },
@@ -27,12 +27,13 @@ const skillCategories = [
     color: 'from-green-500 to-emerald-500',
     skills: [
       { name: 'Node.js', level: 88 },
-      { name: 'Express.js', level: 85 },
       { name: 'Python', level: 80 },
-      { name: 'FastAPI', level: 75 },
+      { name: 'FastAPI', level: 50 },
       { name: 'PHP', level: 70 },
-      { name: 'RESTful APIs', level: 90 },
-      { name: 'GraphQL', level: 65 }
+      { name: 'RESTful APIs', level: 65 },
+      { name: 'Scala', level: 65 },
+      { name: 'Laravel', level: 65 },
+      { name: 'Flask', level: 65 },
     ]
   },
   {
@@ -40,26 +41,25 @@ const skillCategories = [
     icon: <Cloud className="w-6 h-6 transform group-hover:rotate-12 transition-transform duration-300" />,
     color: 'from-purple-500 to-pink-500',
     skills: [
-      { name: 'MongoDB', level: 85 },
-      { name: 'PostgreSQL', level: 80 },
       { name: 'MySQL', level: 85 },
-      { name: 'Redis', level: 70 },
-      { name: 'AWS', level: 75 },
       { name: 'Docker', level: 70 },
-      { name: 'Git', level: 95 }
+      { name: 'GitHub', level: 95 },
+      { name: 'Supabase', level: 75 },
+      { name: 'Firebase', level: 65 },
+      { name: 'n8n', level: 75 }
     ]
   },
   {
-    title: 'Mobile & Tools',
+    title: 'Tools',
     icon: <Smartphone className="w-6 h-6 transform group-hover:rotate-12 transition-transform duration-300" />,
     color: 'from-orange-500 to-red-500',
     skills: [
-      { name: 'React Native', level: 80 },
-      { name: 'Flutter', level: 65 },
-      { name: 'Figma', level: 85 },
-      { name: 'Jest', level: 80 },
-      { name: 'Webpack', level: 75 },
-      { name: 'Vite', level: 85 }
+      { name: 'Figma', level: 75 },
+      { name: 'Draw.io', level: 85 },
+      { name: 'Canva', level: 95 },
+      { name: 'Visual Studio Code', level: 95},
+      { name: 'Antigravity', level: 90},
+      { name: 'Git', level: 95}
     ]
   }
 ]
