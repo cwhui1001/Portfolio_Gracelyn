@@ -29,6 +29,30 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const [activeSection, setActiveSection] = useState('')
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`)
+          }
+        })
+      },
+      { rootMargin: '-50% 0px -50% 0px' }
+    )
+
+    navItems.forEach((item) => {
+      const element = document.getElementById(item.href.substring(1))
+      if (element) {
+        observer.observe(element)
+      }
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -54,10 +78,20 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-200 relative group font-medium"
+                className={cn(
+                  "transition-colors duration-200 relative group font-medium",
+                  activeSection === item.href 
+                    ? "text-primary" 
+                    : "text-muted-foreground hover:text-primary"
+                )}
               >
                 {item.label}
-                <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200" />
+                <span className={cn(
+                  "absolute inset-x-0 -bottom-1 h-0.5 bg-primary transform transition-transform duration-200",
+                  activeSection === item.href 
+                    ? "scale-x-100" 
+                    : "scale-x-0 group-hover:scale-x-100"
+                )} />
               </Link>
             ))}
             <ThemeToggle />
@@ -90,7 +124,12 @@ export function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block px-4 py-3 text-muted-foreground hover:text-primary hover:bg-white/5 rounded-lg transition-colors duration-200"
+                    className={cn(
+                      "block px-4 py-3 rounded-lg transition-colors duration-200",
+                      activeSection === item.href 
+                        ? "text-primary bg-white/10" 
+                        : "text-muted-foreground hover:text-primary hover:bg-white/5"
+                    )}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label}

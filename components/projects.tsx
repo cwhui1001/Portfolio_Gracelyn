@@ -121,7 +121,7 @@ const projects = [
   {
     title: 'Huan Fitness Pal',
     description: 'A user-friendly fitness platform designed to help users manage fitness goals. Provides personalized features including body weight tracking, gym and yoga class access, and customized progress charts.',
-    technologies: ['Web Development', 'Full-Stack Development'],
+    technologies: ['Web Development', 'Full-Stack Development','PHP','Xampp'],
     features: [
       'Fitness goal management',
       'Body weight tracking',
@@ -158,8 +158,8 @@ const projects = [
   },
   {
     title: 'MyToDo',
-    description: 'A simple and efficient task management application that helps users organize and track daily tasks, reminders, and priorities. Personal note-taking app with full-stack development and mobile application features.',
-    technologies: ['Full-Stack Development', 'Mobile Application Development'],
+    description: 'A simple and efficient task management application that helps users organize and track daily tasks, reminders, and priorities.',
+    technologies: ['Mobile Application Development'],
     features: [
       'Task organization',
       'Daily reminders',

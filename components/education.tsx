@@ -16,10 +16,8 @@ const education = [
     achievements: [
       'Dean\'s List for 3 consecutive semesters',
       'Full Scholarship Recipient',
-      'Best Final Year Project Award',
       'Active member of Sunway Tech Club, Sunway Robotic Club, Sunway Yoga Club',
-      'Volunteered in university open day events',
-      'Completed with Honors'
+      'Volunteered in university open day events'
     ],
     courses: [
       'Data Structures & Algorithms',

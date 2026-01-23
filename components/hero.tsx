@@ -252,7 +252,7 @@ export function Hero() {
                  * so ensuring the file is there is "backend's" (user's) responsibility.
                 */}
                 <Image
-                  src="/images/hero/Cwhui-profile.jpeg"
+                  src="/images/hero/Gracelyn-profile2.jpeg"
                   alt="Profile"
                   fill
                   className="object-cover object-top"
