@@ -340,7 +340,7 @@ export function Projects() {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group glass-card rounded-xl overflow-hidden"
+              className={`group glass-card rounded-xl overflow-hidden ${index === filteredProjects.length - 1 && filteredProjects.length % 2 !== 0 ? 'md:col-span-2 md:w-[calc(50%-1rem)] md:mx-auto' : ''}`}
             >
               {/* Project Header */}
               <div className={`h-2 bg-gradient-to-r ${project.gradient}`} />
