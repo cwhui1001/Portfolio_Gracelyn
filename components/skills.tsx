@@ -107,7 +107,7 @@ export function Skills() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient">Skills & Technologies</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 mx-auto rounded-full" />
           <p className="text-xl text-muted-foreground mt-6 max-w-3xl mx-auto">
             A comprehensive overview of my technical skills and proficiency levels across 
             various technologies and frameworks.
@@ -170,7 +170,7 @@ export function Skills() {
         >
           <div className="text-center mb-10">
             <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="p-3 bg-gradient-to-r from-primary to-secondary rounded-lg text-white shadow-lg">
+              <div className="p-3 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 rounded-lg text-white shadow-lg">
                 <Settings className="w-6 h-6 animate-[spin_10s_linear_infinite]" />
               </div>
               <h3 className="text-2xl font-bold text-foreground">

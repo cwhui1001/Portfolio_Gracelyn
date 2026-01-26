@@ -143,7 +143,7 @@ export function Education() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient">Education & Certifications</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 mx-auto rounded-full" />
           <p className="text-xl text-muted-foreground mt-6 max-w-3xl mx-auto">
             My academic journey and continuous learning through professional certifications 
             have built a strong foundation in computer science and modern technologies.
@@ -211,7 +211,7 @@ export function Education() {
                       <ul className="space-y-2">
                         {edu.achievements.map((achievement, achIndex) => (
                           <li key={achIndex} className="flex items-start gap-2">
-                            <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full mt-2 flex-shrink-0" />
+                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 rounded-full mt-2 flex-shrink-0" />
                             <span className="text-muted-foreground">
                               {achievement}
                             </span>

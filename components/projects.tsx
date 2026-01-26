@@ -303,7 +303,7 @@ export function Projects() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient">Featured Projects</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 mx-auto rounded-full" />
           <p className="text-xl text-muted-foreground mt-6 max-w-3xl mx-auto">
             A showcase of my recent work, demonstrating proficiency across various technologies 
             and problem-solving approaches.
@@ -323,7 +323,7 @@ export function Projects() {
               onClick={() => setActiveCategory(category)}
               className={`px-6 py-2 rounded-full font-medium transition-all duration-300 border ${
                 activeCategory === category
-                  ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/25'
+                  ? 'bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 text-white border-transparent shadow-lg shadow-blue-500/25'
                   : 'bg-background/50 text-muted-foreground hover:text-primary hover:border-primary/50 border-input'
               }`}
             >
@@ -481,7 +481,7 @@ export function Projects() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 text-white rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105"
                     >
                       <ExternalLink className="w-4 h-4" />
                       Live Demo

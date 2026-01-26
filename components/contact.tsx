@@ -55,7 +55,7 @@ export function Contact() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-gradient">Get In Touch</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 mx-auto rounded-full" />
           <p className="text-xl text-muted-foreground mt-6 max-w-3xl mx-auto">
             I'm always open to discussing new opportunities, interesting projects, 
             or potential collaborations. Let's connect!
@@ -254,7 +254,7 @@ export function Contact() {
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={state.submitting}
-                    className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground font-semibold py-4 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/25"
+                    className="w-full bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 hover:opacity-90 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/25"
                   >
                     {state.submitting ? (
                       <>

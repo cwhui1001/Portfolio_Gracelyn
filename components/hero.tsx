@@ -101,7 +101,7 @@ export function Hero() {
             rotate: [0, 90, 0],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-radial from-primary/40 via-secondary/20 to-transparent blur-3xl"
+          className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] rounded-full bg-gradient-radial from-blue-500/40 via-teal-400/20 to-transparent blur-3xl"
         />
         
         {/* Secondary Orb (Bottom Right) */}
@@ -113,7 +113,7 @@ export function Hero() {
             rotate: [0, -45, 0],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-radial from-secondary/40 via-primary/20 to-transparent blur-3xl"
+          className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-gradient-radial from-pink-500/40 via-blue-500/20 to-transparent blur-3xl"
         />
 
         {/* Mesh Overlay */}
@@ -184,7 +184,7 @@ export function Hero() {
             >
               <Link
                 href="#experience"
-                className="group relative px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] hover:scale-105 active:scale-95"
+                className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 text-white rounded-full font-semibold overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] hover:scale-105 active:scale-95"
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 <span className="relative flex items-center gap-2">
@@ -233,7 +233,7 @@ export function Hero() {
             className="order-1 md:order-2 flex justify-center relative"
           >
             {/* Animated Blob Background for Image */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary blur-3xl opacity-20 animate-pulse" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 via-teal-400 to-pink-500 blur-3xl opacity-20 animate-pulse" />
             
             <div 
               className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px]"

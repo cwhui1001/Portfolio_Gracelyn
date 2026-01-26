@@ -13,7 +13,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4"
+              className="text-3xl font-bold bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 bg-clip-text text-transparent mb-4"
             >
               Gracelyn Chong
             </motion.div>
