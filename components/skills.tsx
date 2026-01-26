@@ -363,7 +363,7 @@ export function Skills() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { number: '20+', label: 'Technologies Mastered', color: 'text-blue-500' },
-              { number: '3+', label: 'Years of Experience', color: 'text-purple-500' },
+              { number: '2.5+', label: 'Years of Experience', color: 'text-purple-500' },
               { number: '100%', label: 'Commitment to Learning', color: 'text-green-500' }
             ].map((stat, index) => (
               <motion.div 

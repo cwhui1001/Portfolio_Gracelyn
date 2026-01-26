@@ -14,7 +14,6 @@ const education = [
     period: '2025 - 2027',
     gpa: '3.90',
     achievements: [
-      'Dean\'s List for 3 consecutive semesters',
       'Full Scholarship Recipient',
       'Active member of Sunway Tech Club, Sunway Robotic Club, Sunway Yoga Club',
       'Volunteered in university open day events'

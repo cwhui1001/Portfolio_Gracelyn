@@ -33,7 +33,7 @@ export function About() {
               className="grid grid-rows-3 gap-8 pt-8"
             >
               <div className="glass-card p-4 rounded-3xl text-center">
-                <div className="text-3xl font-bold text-primary">3+</div>
+                <div className="text-3xl font-bold text-primary">2.5+</div>
                 <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="glass-card p-4 rounded-3xl text-center">
