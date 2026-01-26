@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Settings } from 'lucide-react'
+import { Settings, X } from 'lucide-react'
 
 // Helper function for external image URLs
 const devicon = (name: string, type: string = 'original') => 
@@ -144,8 +144,68 @@ export function Skills() {
           </p>
         </motion.div>
 
-        {/* Static Divided Circle Section */}
-        <div className="relative w-full h-[950px] mb-20 flex items-center justify-center overflow-hidden">
+        {/* Mobile Skills Grid (Visible only on mobile) */}
+        <div className="md:hidden space-y-12 mb-20">
+          {(Object.keys(categories) as SkillCategory[]).map((category) => (
+            <div key={category} className="space-y-6">
+              <h3 className="text-2xl font-bold text-center text-foreground">{category}</h3>
+              <div className="grid grid-cols-3 gap-4">
+                {categories[category].map((skill) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="glass-card rounded-2xl p-4 flex flex-col items-center justify-center gap-3 active:scale-95 transition-transform cursor-pointer"
+                    onClick={() => setActiveSkill(skill)}
+                  >
+                     <div className="w-10 h-10 relative">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img 
+                          src={skill.image} 
+                          alt={skill.name}
+                          className="w-full h-full object-contain"
+                        />
+                     </div>
+                     <span className="text-xs font-medium text-center text-muted-foreground">{skill.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          ))}
+          
+          {/* Mobile Details Bottom Sheet */}
+          {activeSkill && (
+             <motion.div 
+               initial={{ opacity: 0, y: 100 }}
+               animate={{ opacity: 1, y: 0 }}
+               exit={{ opacity: 0, y: 100 }}
+               className="fixed bottom-0 left-0 right-0 p-6 bg-background/95 backdrop-blur-xl border-t border-border z-50 rounded-t-3xl shadow-2xl pb-10"
+             >
+                <div className="flex items-center gap-4 mb-4">
+                   <div className="w-12 h-12 relative">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={activeSkill.image} alt={activeSkill.name} className="w-full h-full object-contain" />
+                   </div>
+                   <div>
+                      <h3 className="text-xl font-bold">{activeSkill.name}</h3>
+                      <span className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">{activeSkill.category}</span>
+                   </div>
+                   <button 
+                    onClick={() => setActiveSkill(null)} 
+                    className="ml-auto p-2 rounded-full hover:bg-muted transition-colors"
+                   >
+                      <X className="w-6 h-6" />
+                      <span className="sr-only">Close</span>
+                   </button>
+                </div>
+                <p className="text-muted-foreground leading-relaxed">{activeSkill.description}</p>
+             </motion.div>
+          )}
+        </div>
+
+        {/* Static Divided Circle Section (Desktop Only) */}
+        <div className="relative w-full h-[950px] mb-20 hidden md:flex items-center justify-center overflow-hidden">
            
            {/* Center Content */}
            <div className="absolute z-20 text-center max-w-xs pointer-events-none flex flex-col items-center justify-center h-full">
@@ -302,7 +362,7 @@ export function Skills() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { number: '25+', label: 'Technologies Mastered', color: 'text-blue-500' },
+              { number: '20+', label: 'Technologies Mastered', color: 'text-blue-500' },
               { number: '3+', label: 'Years of Experience', color: 'text-purple-500' },
               { number: '100%', label: 'Commitment to Learning', color: 'text-green-500' }
             ].map((stat, index) => (

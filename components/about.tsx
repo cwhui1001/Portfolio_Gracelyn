@@ -41,7 +41,7 @@ export function About() {
                 <div className="text-sm text-muted-foreground">Projects Completed</div>
               </div>
               <div className="glass-card p-4 rounded-3xl text-center">
-                <div className="text-3xl font-bold text-accent-foreground">25+</div>
+                <div className="text-3xl font-bold text-accent-foreground">20+</div>
                 <div className="text-sm text-muted-foreground">Technologies</div>
               </div>
             </motion.div>
