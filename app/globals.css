@@ -6,13 +6,13 @@
   :root {
     /* Light Mode - Sophisticated & Clean */
     --background: 210 40% 98%; /* Soft white/blue */
-    --foreground: 222 47% 11%; /* Deep navy */
+    --foreground: 222 47% 2%; /* Deepest navy/black - Increased Contrast */
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 222 47% 2%; /* Increased Contrast */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 222 47% 2%; /* Increased Contrast */
 
     --primary: 221 83% 53%; /* Vivid Blue */
     --primary-foreground: 210 40% 98%;
@@ -21,16 +21,16 @@
     --secondary-foreground: 210 40% 98%;
 
     --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted-foreground: 215.4 16.3% 35%; /* Darker gray for better readability */
 
     --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-foreground: 222.2 47.4% 2%; /* Increased Contrast */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 214.3 31.8% 85%; /* Slightly darker border */
+    --input: 214.3 31.8% 85%;
     --ring: 221 83% 53%;
 
     --radius: 0.75rem;
@@ -38,32 +38,32 @@
 
   .dark {
     /* Dark Mode - Deep Space Cosmic */
-    --background: 222 47% 11%; /* Deepest Navy/Black */
+    --background: 222 47% 5%; /* Deepest Navy/Black - Increased Contrast */
     --foreground: 210 40% 98%;
 
-    --card: 217 33% 17%; /* Darker slate */
+    --card: 222 47% 8%; /* Darker slate for contrast against text */
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 11%;
+    --popover: 222 47% 5%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 217 91% 60%; /* Electric Blue */
-    --primary-foreground: 222 47% 11%;
+    --primary-foreground: 222 47% 5%;
 
     --secondary: 262 83% 58%; /* Electric Purple */
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 222 47% 10%; /* Darker muted background */
+    --muted-foreground: 215 20% 80%; /* Lighter muted text */
 
-    --accent: 217 33% 17%;
+    --accent: 222 47% 10%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
+    --border: 222 47% 15%; /* Visible borders */
+    --input: 222 47% 15%;
     --ring: 217 91% 60%;
   }
 }
