@@ -82,11 +82,11 @@
 
 @layer utilities {
   .glass {
-    @apply bg-background/60 backdrop-blur-lg border border-white/10 shadow-lg;
+    @apply bg-background/80 backdrop-blur-lg border border-black/10 dark:border-white/10 shadow-lg;
   }
 
   .glass-card {
-    @apply bg-card/40 backdrop-blur-md border border-white/10 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5;
+    @apply bg-card/60 backdrop-blur-md border border-black/10 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5;
   }
 
   .text-gradient {

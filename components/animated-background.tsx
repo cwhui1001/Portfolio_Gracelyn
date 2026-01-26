@@ -22,7 +22,7 @@ export function AnimatedBackground() {
       </video>
 
       {/* Overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-background/60 dark:bg-black/60" />
+      <div className="absolute inset-0 bg-background/90 dark:bg-black/70" />
       
       {/* Optional: Texture Overlay for better integration */}
       <div className="absolute inset-0 z-0 opacity-[0.03] bg-[url('/noise.png')] pointer-events-none mix-blend-overlay" />

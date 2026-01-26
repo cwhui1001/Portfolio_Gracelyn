@@ -183,11 +183,11 @@ export function Skills() {
            <div className="relative w-[840px] h-[840px]">
               
               {/* Quadrant Dividers/Backgrounds (Optional visual application) */}
-              <div className="absolute inset-0 rounded-full border border-white/5 opacity-50" />
+              <div className="absolute inset-0 rounded-full border border-black/5 dark:border-white/5 opacity-50" />
               
               {/* Render Divider Lines */}
-              <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/5 -translate-x-1/2" />
-              <div className="absolute left-0 right-0 top-1/2 h-px bg-white/5 -translate-y-1/2" />
+              <div className="absolute top-0 bottom-0 left-1/2 w-px bg-black/5 dark:bg-white/5 -translate-x-1/2" />
+              <div className="absolute left-0 right-0 top-1/2 h-px bg-black/5 dark:bg-white/5 -translate-y-1/2" />
 
               {/* Render Skills by Category */}
               {(Object.keys(categories) as SkillCategory[]).map((category) => {
@@ -254,7 +254,7 @@ export function Skills() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="glass-card rounded-xl p-8 shadow-2xl border-t border-white/10"
+          className="glass-card rounded-xl p-8 shadow-2xl border-t border-black/10 dark:border-white/10"
         >
           <div className="text-center mb-10">
             <div className="flex items-center justify-center gap-4 mb-4">
