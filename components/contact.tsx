@@ -91,7 +91,7 @@ export function Contact() {
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.02, x: 5 }}
-                  className="glass-card flex items-center gap-4 p-4 rounded-xl border border-white/5 hover:border-primary/50 transition-all duration-300"
+                  className="glass-card flex items-center gap-4 p-4 rounded-3xl border border-white/5 hover:border-primary/50 transition-all duration-300"
                 >
                   <div className={`p-3 bg-gradient-to-r ${item.color} rounded-lg text-white shadow-lg`}>
                     <item.icon className="w-6 h-6" />
@@ -127,7 +127,7 @@ export function Contact() {
                   href="https://www.linkedin.com/in/gracelyn-chong-wen-hui-015a80271/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 glass-card hover:bg-[#0077b5] hover:text-white text-muted-foreground rounded-xl transition-all duration-300"
+                  className="p-3 glass-card hover:bg-[#0077b5] hover:text-white text-muted-foreground rounded-3xl transition-all duration-300"
                 >
                   <Linkedin className="w-6 h-6" />
                 </motion.a>
@@ -137,7 +137,7 @@ export function Contact() {
                   href="https://github.com/cwhui1001"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 glass-card hover:bg-black hover:text-white text-muted-foreground rounded-xl transition-all duration-300"
+                  className="p-3 glass-card hover:bg-black hover:text-white text-muted-foreground rounded-3xl transition-all duration-300"
                 >
                   <Github className="w-6 h-6" />
                 </motion.a>
@@ -150,7 +150,7 @@ export function Contact() {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="glass-card rounded-xl p-8 shadow-2xl border-t border-white/10"
+            className="glass-card rounded-3xl p-8 shadow-2xl border-t border-white/10"
           >
             {state.succeeded ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12 space-y-6">

@@ -254,7 +254,7 @@ export function Skills() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="glass-card rounded-xl p-8 shadow-2xl border-t border-black/10 dark:border-white/10"
+          className="glass-card rounded-3xl p-8 shadow-2xl border-t border-black/10 dark:border-white/10"
         >
           <div className="text-center mb-10">
             <div className="flex items-center justify-center gap-4 mb-4">
@@ -309,7 +309,7 @@ export function Skills() {
               <motion.div 
                 key={index}
                 whileHover={{ y: -5 }}
-                className="glass-card rounded-xl p-6 hover:bg-primary/5 transition-all duration-300"
+                className="glass-card rounded-3xl p-6 hover:bg-primary/5 transition-all duration-300"
               >
                 <div className={`text-4xl font-bold ${stat.color} mb-2`}>
                   {stat.number}

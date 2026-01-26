@@ -174,7 +174,7 @@ export function Education() {
               <motion.div
                 key={index}
                 variants={item}
-                className="glass-card rounded-xl p-8 hover:bg-primary/5 transition-all duration-300 group"
+                className="glass-card rounded-3xl p-8 hover:bg-primary/5 transition-all duration-300 group"
               >
                 <div className="grid md:grid-cols-3 gap-6">
                   {/* Main Info */}
@@ -265,7 +265,7 @@ export function Education() {
               <motion.div
                 key={index}
                 variants={item}
-                className="glass-card rounded-xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300 group flex flex-col cursor-pointer"
+                className="glass-card rounded-3xl overflow-hidden hover:translate-y-[-4px] transition-all duration-300 group flex flex-col cursor-pointer"
                 onClick={() => setSelectedCertificate(cert)}
               >
                 {/* Certificate Image */}

@@ -98,7 +98,7 @@ export function Experience() {
                 <div className={`ml-12 md:ml-0 md:w-1/2 ${
                   index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
                 }`}>
-                  <div className="glass-card rounded-lg p-6">
+                  <div className="glass-card rounded-3xl p-6">
                     <div className="flex flex-wrap items-center gap-2 mb-4">
                       <Calendar className="w-4 h-4 text-primary" />
                       <span className="text-sm text-primary font-medium">
