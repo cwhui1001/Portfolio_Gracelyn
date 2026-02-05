@@ -3,10 +3,34 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { ExternalLink, Github, Code, Smartphone, Globe, Database, ChevronLeft, ChevronRight, X, Activity, Utensils, Cpu, FileText } from 'lucide-react'
+import { ExternalLink, Github, Code, Smartphone, Globe, Database, ChevronLeft, ChevronRight, X, Activity, Utensils, Cpu, FileText, Wifi } from 'lucide-react'
 import Image from 'next/image'
 
 const projects = [
+  {
+    title: 'Fiber Internet Online',
+    description: 'A comprehensive platform specialized in Time Fibre internet services, designed to simplify the application process. Features include an intuitive coverage checker, detailed plan comparisons for home and business, and seamless WhatsApp integration for instant support. The platform focuses on high conversion and user accessibility.',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Hostinger', 'Google Tag Manager'],
+    features: [
+      'Coverage Checker',
+      'Business & Home Plans',
+      'WhatsApp Output Integration',
+      'Automatic Email Notifications',
+      'Conversion Tracking',
+      'Responsive UI'
+    ],
+    images: [
+      '/images/projects/fiber-internet/main.png',
+      '/images/projects/fiber-internet/plans.png',
+      '/images/projects/fiber-internet/coverage.png',
+      '/images/projects/fiber-internet/contact.png'
+    ],
+    categories: ['Web App', 'Full Stack'],
+    icon: <Wifi className="w-6 h-6" />,
+    gradient: 'from-fuchsia-500 to-pink-600',
+    github: 'https://github.com/cwhui1001/time_distributer', 
+    demo: 'https://fiberinternetonline.my/'
+  },
   {
     title: 'Health Tracker',
     description: 'A comprehensive health and wellness management application built with Scala and JavaFX. It enables users to monitor and track various aspects of their health including exercise routines, sleep patterns, mood fluctuations, and personal health data.',
@@ -28,8 +52,8 @@ const projects = [
     categories: ['Full Stack'],
     icon: <Activity className="w-6 h-6" />,
     gradient: 'from-rose-500 to-pink-600',
-    github: 'https://github.com/sunwaydcis/final-project-cwhui1001', // Private/Enterprise project
-    demo: '#' // Private/Enterprise project
+    github: 'https://github.com/sunwaydcis/final-project-cwhui1001', 
+    demo: '#' 
   },
   {
     title: 'Nutrition Tracker (Eat Smart AI)',
