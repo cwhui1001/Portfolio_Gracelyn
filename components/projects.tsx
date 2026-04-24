@@ -162,7 +162,7 @@ const projects = [
       '/images/projects/brighterus/features.png',
       '/images/projects/brighterus/admin-dashboard.png'
     ],
-    categories: ['Web App'],
+    categories: ['Web App', 'Full Stack'],
     icon: <Globe className="w-6 h-6" />,
     gradient: 'from-purple-500 to-pink-600',
     github: 'https://github.com/cwhui1001/BrighterUs', // Academic project
