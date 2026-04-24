@@ -25,7 +25,7 @@ const projects = [
       '/images/projects/fiber-internet/coverage.png',
       '/images/projects/fiber-internet/contact.png'
     ],
-    categories: ['Web App', 'Full Stack'],
+    categories: ['Web App'],
     icon: <Wifi className="w-6 h-6" />,
     gradient: 'from-fuchsia-500 to-pink-600',
     github: 'https://github.com/cwhui1001/time_distributer', 
