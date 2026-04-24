@@ -4,17 +4,13 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle, CheckCircle } from 'lucide-react'
-import { useForm, ValidationError } from '@formspree/react'
 
 export function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   
-  // TODO: Replace with your actual Formspree Form ID
-  // 1. Go to https://formspree.io/
-  // 2. Create a new form
-  // 3. Copy the 8-character ID from the integration URL
-  const [state, handleSubmit] = useForm("YOUR_FORM_ID_HERE");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -25,7 +21,7 @@ export function Contact() {
 
   // Clear form after successful submission
   useEffect(() => {
-    if (state.succeeded) {
+    if (isSubmitted) {
       setFormData({
         name: '',
         email: '',
@@ -33,7 +29,7 @@ export function Contact() {
         message: ''
       })
     }
-  }, [state.succeeded])
+  }, [isSubmitted])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -41,6 +37,24 @@ export function Contact() {
       [e.target.name]: e.target.value
     })
   }
+
+  const handleCustomSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Construct WhatsApp message
+    const text = `New message from Portfolio!%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Subject:* ${formData.subject}%0A*Message:* ${formData.message}`;
+    const whatsappUrl = `https://wa.me/601123137816?text=${text}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+
+    // Show success message
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    }, 500);
+  };
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
@@ -152,7 +166,7 @@ export function Contact() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="glass-card rounded-3xl p-8 shadow-2xl border-t border-white/10"
           >
-            {state.succeeded ? (
+            {isSubmitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12 space-y-6">
                 <div className="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mb-4">
                   <CheckCircle className="w-10 h-10" />
@@ -162,7 +176,10 @@ export function Contact() {
                   Thank you for reaching out. I'll get back to you as soon as possible.
                 </p>
                 <button 
-                  onClick={() => window.location.reload()}
+                  onClick={() => {
+                    setIsSubmitted(false);
+                    setFormData({ name: '', email: '', subject: '', message: '' });
+                  }}
                   className="text-primary hover:underline mt-4"
                 >
                   Send another message
@@ -179,7 +196,7 @@ export function Contact() {
                   </h3>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleCustomSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="group">
                       <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
@@ -195,7 +212,6 @@ export function Contact() {
                         className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground outline-none"
                         placeholder="Your Name"
                       />
-                      <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-500 text-sm mt-1" />
                     </div>
                     <div className="group">
                       <label className="block text-sm font-medium text-muted-foreground mb-2 group-focus-within:text-primary transition-colors">
@@ -211,7 +227,6 @@ export function Contact() {
                         className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground outline-none"
                         placeholder="your.email@example.com"
                       />
-                      <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-500 text-sm mt-1" />
                     </div>
                   </div>
 
@@ -229,7 +244,6 @@ export function Contact() {
                       className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground outline-none"
                       placeholder="What's this about?"
                     />
-                    <ValidationError prefix="Subject" field="subject" errors={state.errors} className="text-red-500 text-sm mt-1" />
                   </div>
 
                   <div className="group">
@@ -246,17 +260,16 @@ export function Contact() {
                       className="w-full px-4 py-3 bg-background/50 border border-input rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary focus:bg-background transition-all duration-200 text-foreground resize-none outline-none"
                       placeholder="Your message here..."
                     />
-                    <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-500 text-sm mt-1" />
                   </div>
 
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    disabled={state.submitting}
+                    disabled={isSubmitting}
                     className="w-full bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 hover:opacity-90 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/25"
                   >
-                    {state.submitting ? (
+                    {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                         Sending...
