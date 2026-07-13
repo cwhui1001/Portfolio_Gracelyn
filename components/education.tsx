@@ -8,14 +8,16 @@ import Image from 'next/image'
 
 const education = [
   {
-    degree: 'Bachelor of Science in Computer Science',
+    degree: 'Bachelor of Science (Hons) in Computer Science',
     institution: 'Sunway University',
     location: 'Kuala Lumpur, Malaysia',
     period: '2025 - 2027',
-    gpa: '3.90',
+    gpa: '4.0',
     achievements: [
       'Full Scholarship Recipient',
-      'Active member of Sunway Tech Club, Sunway Robotic Club, Sunway Yoga Club',
+      'Dean\'s List in Current Semester',
+      'Treasurer of Sunway Wushu Club',
+      'Active member of Sunway Tech Club, Sunway Robotic Club, Sunway Badminton Club, Sunway Yoga Club',
       'Volunteered in university open day events'
     ],
     courses: [
@@ -24,7 +26,8 @@ const education = [
       'Database Management Systems',
       'Web Development',
       'Mobile Application Development',
-      'Machine Learning'
+      'Artificial Intelligence',
+      'Distributed Systems'
     ]
   },
   {

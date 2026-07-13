@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail, MessageCircle } from 'lucide-react'
+import { ChevronDown, Github, Linkedin, Mail, MessageCircle, Download } from 'lucide-react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { useEffect, useState } from 'react'
@@ -180,11 +180,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center pt-4"
+              className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center md:justify-start items-center pt-4"
             >
               <Link
                 href="#experience"
-                className="group relative px-8 py-4 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 text-white rounded-full font-semibold overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] hover:scale-105 active:scale-95"
+                className="group relative px-6 py-3.5 bg-gradient-to-r from-blue-500 via-teal-400 to-pink-500 text-white rounded-full font-semibold overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] hover:scale-105 active:scale-95 whitespace-nowrap"
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 <span className="relative flex items-center gap-2">
@@ -193,12 +193,16 @@ export function Hero() {
                 </span>
               </Link>
 
-              <Link
-                href="#contact"
-                className="group px-8 py-4 rounded-full font-semibold glass-card text-foreground hover:bg-secondary/20 transition-all duration-300 hover:scale-105 active:scale-95 border-primary/20 hover:border-primary/50"
+              <a
+                href="/Cwhui - Resume (Intern) (8) (1).pdf"
+                download
+                className="group px-6 py-3.5 rounded-full font-semibold glass-card text-foreground hover:bg-secondary/20 transition-all duration-300 hover:scale-105 active:scale-95 border border-primary/20 hover:border-primary/50 flex items-center gap-2 whitespace-nowrap"
               >
-                Contact Me
-              </Link>
+                <Download className="w-5 h-5 text-primary group-hover:translate-y-0.5 transition-transform" />
+                Download Resume
+              </a>
+
+           
             </motion.div>
 
             {/* Social Links */}

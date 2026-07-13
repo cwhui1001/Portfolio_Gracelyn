@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { Mail, Phone, MapPin, Send, Linkedin, Github, MessageCircle, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Linkedin, MessageCircle, CheckCircle } from 'lucide-react'
 
 export function Contact() {
   const ref = useRef(null)
@@ -132,28 +132,19 @@ export function Contact() {
             {/* Social Links */}
             <div>
               <h4 className="font-semibold text-foreground mb-4">
-                Connect with me on social media
+                Let's Connect!
               </h4>
-              <div className="flex gap-4">
+              <div>
                 <motion.a
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   href="https://www.linkedin.com/in/gracelyn-chong-wen-hui-015a80271/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 glass-card hover:bg-[#0077b5] hover:text-white text-muted-foreground rounded-3xl transition-all duration-300"
+                  className="inline-flex items-center gap-2 bg-[#0077b5] hover:bg-[#006295] text-white font-semibold py-3.5 px-6 rounded-lg transition-all duration-300 shadow-md shadow-[#0077b5]/25"
                 >
-                  <Linkedin className="w-6 h-6" />
-                </motion.a>
-                <motion.a
-                  whileHover={{ scale: 1.1, rotate: -5 }}
-                  whileTap={{ scale: 0.9 }}
-                  href="https://github.com/cwhui1001"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 glass-card hover:bg-black hover:text-white text-muted-foreground rounded-3xl transition-all duration-300"
-                >
-                  <Github className="w-6 h-6" />
+                  <Linkedin className="w-5 h-5" />
+                  Connect on LinkedIn
                 </motion.a>
               </div>
             </div>

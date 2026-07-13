@@ -55,24 +55,25 @@ export function About() {
           >
             <div className="prose prose-lg dark:prose-invert max-w-none space-y-8">
               <p className="text-muted-foreground leading-relaxed">
-                I'm a passionate software developer with a strong foundation in modern web technologies 
-                and a keen interest in creating innovative digital solutions. My journey in technology 
-                began with a curiosity about how things work, which has evolved into a dedicated pursuit 
-                of building exceptional user experiences.
+                Hi! I'm a software developer who enjoys building modern, user-friendly web applications. I started 
+                learning programming out of curiosity, and over time it became something I genuinely enjoy. 
+                I like turning ideas into real products that people can use and appreciate.
               </p>
               
               <p className="text-muted-foreground leading-relaxed">
-                With experience in full-stack development, I enjoy working across the entire technology 
-                stack - from crafting intuitive user interfaces to building robust backend systems. 
-                I'm particularly drawn to projects that challenge me to learn new technologies and 
-                solve complex problems.
+                I'm interested in full-stack development, so I enjoy working on both the frontend and
+                backend. Lately, I've also been exploring artificial intelligence and machine learning,
+                and I'm excited about how AI can be used to create smarter, more meaningful user
+                experiences. I'm always looking for opportunities to learn, improve, and build something
+                that makes a difference.
               </p>
               
               <p className="text-muted-foreground leading-relaxed">
-                When I'm not coding, you can find me exploring the latest tech trends, contributing to 
-                open-source projects, or sharing knowledge with the developer community. I believe in 
-                continuous learning and am always excited about the next opportunity to grow and make 
-                an impact through technology.
+                When I'm not coding, I'm probably on a badminton court (Yesss I'm a badminton kaki and always up
+                for a game! 🏸). Besides that, I enjoy exploring new technologies, building personal
+                projects, and staying up to date with the latest trends in software development and AI.
+                I believe there's always something new to learn, and that's what keeps me excited about
+                tech.
               </p>
             </div>
 

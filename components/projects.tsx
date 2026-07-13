@@ -111,8 +111,8 @@ const projects = [
       'OCR-based invoice data extraction',
       'n8n workflow automation',
       'Real-time invoice processing',
-      'Full-stack development',
-      'Modern responsive design'
+      'Secure user authentication and relational data storage',
+      'Unstructured text parsing into clean JSON using LLMs'
     ],
     images: [
       '/images/projects/sap-invoice-management/dashboard.png',
@@ -120,7 +120,7 @@ const projects = [
       '/images/projects/sap-invoice-management/profile-setting.png',
       '/images/projects/sap-invoice-management/upload-invoices.png'
     ],
-    categories: ['Full Stack'],
+    categories: ['Full Stack', 'AI'],
     icon: <FileText className="w-6 h-6" />,
     gradient: 'from-indigo-500 to-violet-600',
     github: 'https://github.com/cwhui1001/SAPInvoiceOCR', // Private/Enterprise project
@@ -135,7 +135,8 @@ const projects = [
       'AI-powered responses',
       'SAP system integration',
       'Automated support queries',
-      'Real-time assistance'
+      'Real-time assistance',
+      'Summarise the data in SAP documentation with charts'
     ],
     images: [
       '/images/projects/sap-support-chatbot/chat-interface.png'
@@ -152,9 +153,10 @@ const projects = [
     technologies: ['Laravel', 'PHP', 'HTML', 'CSS', 'Web Development', 'Full-Stack Development', 'UI Design', 'UX'],
     features: [
       'University information consolidation',
-      'Student support features',
+      'MBTI career assessment',
       'Efficient course searching',
-      'Multi-platform integration'
+      'AI Chatbot as the assistant and general counsellor of the platform',
+      'Clean admin dashboard with statistics'
     ],
     images: [
       '/images/projects/brighterus/homepage.png',

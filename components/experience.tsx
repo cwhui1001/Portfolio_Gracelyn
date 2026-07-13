@@ -7,7 +7,7 @@ import { Calendar, MapPin, Building } from 'lucide-react'
 
 const experiences = [
   {
-    title: 'Software Developer Intern',
+    title: 'AI Software Developer Intern',
     company: 'Fast Track SDI Sdn Bhd',
     location: 'Puchong, Selangor, Malaysia',
     period: 'Apr 2025 - Aug 2025 · 5 mos',
@@ -18,7 +18,7 @@ const experiences = [
       'Collaborated with senior developers on various projects',
       'Applied academic knowledge to real-world software development scenarios'
     ],
-    technologies: ['FinTech', 'SAP ERP', 'Software Development', 'SAP Products', 'SAP Implementation', 'SAP BusinessObjects', 'SQL', 'C#']
+    technologies: ['FinTech', 'SAP ERP', 'Artificial Intelligence','Software Development', 'SQL', 'C#']
   },
   {
     title: 'IT Support Associate',
@@ -32,7 +32,7 @@ const experiences = [
       'Assisted with IT infrastructure maintenance and updates',
       'Documented technical issues and solutions for knowledge base'
     ],
-    technologies: ['Information Technology', 'Technical Support', 'Hardware Troubleshooting']
+    technologies: ['Information Technology', 'Technical Support', 'Hardware Configuration']
   },
   {
     title: 'Admissions Ambassador',
