@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { AnimatedBackground } from '@/components/animated-background'
+import { Chatbot } from '@/components/chatbot'
 
 const outfit = Outfit({ subsets: ['latin'] })
 
@@ -35,6 +36,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
           </div>
+          <Chatbot />
         </ThemeProvider>
       </body>
     </html>
