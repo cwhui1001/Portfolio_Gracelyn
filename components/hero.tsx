@@ -194,7 +194,7 @@ export function Hero() {
               </Link>
 
               <a
-                href="/Cwhui - Resume (Intern) (8) (1).pdf"
+                href="/Cwhui - Resume (Intern).pdf"
                 download
                 className="group px-6 py-3.5 rounded-full font-semibold glass-card text-foreground hover:bg-secondary/20 transition-all duration-300 hover:scale-105 active:scale-95 border border-primary/20 hover:border-primary/50 flex items-center gap-2 whitespace-nowrap"
               >

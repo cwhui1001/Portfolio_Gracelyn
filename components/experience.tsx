@@ -7,16 +7,31 @@ import { Calendar, MapPin, Building } from 'lucide-react'
 
 const experiences = [
   {
+    title: 'Freelance Website Developer',
+    company: 'Self-Employed',
+    location: 'Selangor, Malaysia',
+    period: 'Jan 2026 - Present · 7 mos',
+    type: 'Freelance',
+    responsibilities: [
+      'Designed and developed responsive websites for clients using React, Next.js, Tailwind CSS, and JavaScript.',
+      'Collaborated with clients to gather requirements, translate ideas into functional web solutions, and deliver projects on schedule.',
+      'Configured hosting, domains, SSL certificates, and deployments using Hostinger, Cloudflare, and Vercel.',
+      'Optimized website performance, SEO, and mobile responsiveness to improve user experience.',
+      'Provided ongoing maintenance, troubleshooting, and feature enhancements after deployment.'
+    ],
+    technologies: ['React', 'Next.js', 'Web Hosting','Software Development', 'Requirement Engineering', 'Customer Service','Project Management']
+  },
+  {
     title: 'AI Software Developer Intern',
-    company: 'Fast Track SDI Sdn Bhd',
+    company: 'Fast Track SBOI Sdn Bhd',
     location: 'Puchong, Selangor, Malaysia',
     period: 'Apr 2025 - Aug 2025 · 5 mos',
     type: 'Internship',
     responsibilities: [
-      'Developed and maintained software applications using modern development practices',
-      'Gained hands-on experience with enterprise software development',
-      'Collaborated with senior developers on various projects',
-      'Applied academic knowledge to real-world software development scenarios'
+      'Completed training in SAP Business One, gaining practical knowledge of enterprise business operations and system workflows.',
+      'Developed and maintained software applications using modern software development practices.',
+      'Contributed to AI automation and process automation projects as part of the Research & Development team.',
+      'Collaborated with senior developers to deliver real-world software solutions and enhance technical skills.'
     ],
     technologies: ['FinTech', 'SAP ERP', 'Artificial Intelligence','Software Development', 'SQL', 'C#']
   },
