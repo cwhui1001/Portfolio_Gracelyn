@@ -24,17 +24,20 @@ A modern, premium portfolio website built with Next.js 14, featuring a beautiful
 ## 📦 Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd Portfolio_Gracelyn
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -44,16 +47,19 @@ npm run dev
 ## 🏗 Build & Deploy
 
 ### Build for Production
+
 ```bash
 npm run build
 ```
 
 ### Start Production Server
+
 ```bash
 npm start
 ```
 
 ### Deploy to Vercel
+
 The easiest way to deploy your portfolio is using Vercel:
 
 1. Push your code to GitHub
@@ -63,6 +69,7 @@ The easiest way to deploy your portfolio is using Vercel:
 ## 🎨 Customization
 
 ### Personal Information
+
 Update the content in each component file to reflect your personal information:
 
 - `components/hero.tsx` - Name, title, and introduction
@@ -74,12 +81,15 @@ Update the content in each component file to reflect your personal information:
 - `components/contact.tsx` - Contact information and social links
 
 ### Styling & Theme
+
 - Modify `tailwind.config.js` for custom colors and styling
 - Update `app/globals.css` for global styles
 - Adjust animation timings in component files
 
 ### Content Structure
+
 The portfolio includes these main sections:
+
 - Hero/Landing section with introduction
 - About section with personal overview
 - Experience timeline with work history
@@ -101,6 +111,7 @@ The portfolio includes these main sections:
 ## 📱 Responsive Design
 
 The portfolio is fully responsive and optimized for:
+
 - Desktop (1200px+)
 - Tablet (768px - 1199px)
 - Mobile (320px - 767px)
@@ -115,6 +126,7 @@ The portfolio is fully responsive and optimized for:
 ## 🔧 Development
 
 ### Project Structure
+
 ```
 ├── app/                 # Next.js app directory
 ├── components/          # React components
@@ -127,6 +139,7 @@ The portfolio is fully responsive and optimized for:
 ```
 
 ### Scripts
+
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run start` - Start production server

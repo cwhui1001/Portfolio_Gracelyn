@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY
+    const apiKey = process.env.OPENROUTER_API_KEY
     if (!apiKey) {
       return NextResponse.json(
         {
-          error: 'GEMINI_API_KEY is not configured on the server. Please set it in your environment variables.',
+          error: 'OPENROUTER_API_KEY is not configured on the server. Please set it in your environment variables.',
           isConfigured: false
         },
         { status: 500 }
@@ -22,18 +22,6 @@ export async function POST(req: Request) {
         { status: 400 }
       )
     }
-
-    // Format chat history for Gemini API.
-    // Gemini API format expects:
-    // contents: [ { role: 'user' | 'model', parts: [ { text: string } ] } ]
-    // Map from client format { role: 'user' | 'assistant', content: string }
-    const contents = messages.map((m: any) => {
-      const role = m.role === 'assistant' ? 'model' : 'user'
-      return {
-        role: role,
-        parts: [{ text: m.content }]
-      }
-    })
 
     const systemInstruction = `You are the AI Assistant for Gracelyn Chong Wen Hui's portfolio website. Your purpose is to represent Gracelyn, answer questions about her qualifications, experience, skills, projects, and connect with potential employers or clients.
 
@@ -117,38 +105,43 @@ Guidelines:
 5. Add emojis to make responses lively, especially 🏸 when talking about badminton!
 `
 
-    // Call Gemini API
+    const chatMessages = [
+      { role: 'system', content: systemInstruction },
+      ...messages.map((message: any) => ({
+        role: message.role === 'assistant' ? 'assistant' : 'user',
+        content: message.content
+      }))
+    ]
+
+    // OpenRouter uses one endpoint for all models. Change OPENROUTER_MODEL to switch models.
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+      'https://openrouter.ai/api/v1/chat/completions',
       {
         method: 'POST',
         headers: {
+          Authorization: `Bearer ${apiKey}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          contents,
-          systemInstruction: {
-            parts: [{ text: systemInstruction }]
-          },
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 800
-          }
+          model: process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash',
+          messages: chatMessages,
+          temperature: 0.7,
+          max_tokens: 800
         })
       }
     )
 
     if (!response.ok) {
       const errText = await response.text()
-      console.error('Gemini API Error:', errText)
+      console.error('OpenRouter API Error:', errText)
       return NextResponse.json(
-        { error: 'Error communicating with Gemini API.' },
+        { error: 'Error communicating with OpenRouter API.' },
         { status: response.status }
       )
     }
 
     const data = await response.json()
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't process that request."
+    const reply = data.choices?.[0]?.message?.content || "I'm sorry, I couldn't process that request."
 
     return NextResponse.json({ reply })
   } catch (error: any) {

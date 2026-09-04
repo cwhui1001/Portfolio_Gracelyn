@@ -219,7 +219,7 @@ export function Chatbot() {
 
       if (!response.ok) {
         if (data.isConfigured === false) {
-          throw new Error('GEMINI_API_KEY is not configured on the server. Please add it to your environment variables.')
+          throw new Error('API_KEY is not configured on the server. Please add it to your environment variables.')
         }
         throw new Error(data.error || 'Failed to get response from assistant.')
       }
