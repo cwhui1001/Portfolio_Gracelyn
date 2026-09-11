@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
   try {
-    const apiKey = process.env.OPENROUTER_API_KEY
+    const apiKey = process.env.GEMINI_API_KEY
     if (!apiKey) {
       return NextResponse.json(
         {
-          error: 'OPENROUTER_API_KEY is not configured on the server. Please set it in your environment variables.',
+          error: 'GEMINI_API_KEY is not configured on the server. Please set it in your environment variables.',
           isConfigured: false
         },
         { status: 500 }
@@ -105,43 +105,46 @@ Guidelines:
 5. Add emojis to make responses lively, especially 🏸 when talking about badminton!
 `
 
-    const chatMessages = [
-      { role: 'system', content: systemInstruction },
-      ...messages.map((message: any) => ({
-        role: message.role === 'assistant' ? 'assistant' : 'user',
-        content: message.content
-      }))
-    ]
+    const contents = messages.map((message: any) => ({
+      role: message.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: message.content }]
+    }))
 
-    // OpenRouter uses one endpoint for all models. Change OPENROUTER_MODEL to switch models.
+    const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash'
     const response = await fetch(
-      'https://openrouter.ai/api/v1/chat/completions',
+      `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${apiKey}`,
+          'x-goog-api-key': apiKey,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: process.env.OPENROUTER_MODEL || 'google/gemini-2.5-flash',
-          messages: chatMessages,
-          temperature: 0.7,
-          max_tokens: 800
+          system_instruction: {
+            parts: [{ text: systemInstruction }]
+          },
+          contents,
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 800
+          }
         })
       }
     )
 
     if (!response.ok) {
       const errText = await response.text()
-      console.error('OpenRouter API Error:', errText)
+      console.error('Gemini API Error:', errText)
       return NextResponse.json(
-        { error: 'Error communicating with OpenRouter API.' },
+        { error: 'Error communicating with Gemini API.' },
         { status: response.status }
       )
     }
 
     const data = await response.json()
-    const reply = data.choices?.[0]?.message?.content || "I'm sorry, I couldn't process that request."
+    const reply = data.candidates?.[0]?.content?.parts
+      ?.map((part: { text?: string }) => part.text || '')
+      .join('') || "I'm sorry, I couldn't process that request."
 
     return NextResponse.json({ reply })
   } catch (error: any) {
