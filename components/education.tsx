@@ -12,10 +12,10 @@ const education = [
     institution: 'Sunway University',
     location: 'Kuala Lumpur, Malaysia',
     period: '2025 - 2027',
-    gpa: '4.0',
+    gpa: '3.92',
     achievements: [
       'Full Scholarship Recipient',
-      'Dean\'s List in Current Semester',
+      'Dean\'s List in three consecutive Semesters',
       'Treasurer of Sunway Wushu Club',
       'Active member of Sunway Tech Club, Sunway Robotic Club, Sunway Badminton Club, Sunway Yoga Club',
       'Volunteered in university open day events'
@@ -202,7 +202,7 @@ export function Education() {
                       <div className="flex items-center gap-2">
                         <Award className="w-4 h-4" />
                         <span>
-                          {edu.results ? edu.results : `GPA: ${edu.gpa}/4.0`}
+                          {edu.results ? edu.results : `GPA: ${edu.gpa}`}
                         </span>
                       </div>
                     </div>

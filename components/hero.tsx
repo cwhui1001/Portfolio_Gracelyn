@@ -167,7 +167,7 @@ export function Hero() {
             {/* Description */}
             <div className="space-y-4 max-w-lg mx-auto md:mx-0">
               <h3 className="text-2xl md:text-3xl font-bold leading-tight">
-                <span className="text-gradient">Innovative Software Developer & Tech Explorer</span>
+                <span className="text-gradient">Innovative Full-Stack AI Developer & Tech Explorer</span>
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Building <span className="text-primary font-semibold mx-1">innovative</span> 
@@ -194,12 +194,12 @@ export function Hero() {
               </Link>
 
               <a
-                href="/Cwhui - Resume (Intern) (1).pdf"
+                href="/CV - Chong Wen Hui (2).pdf"
                 download
                 className="group px-6 py-3.5 rounded-full font-semibold glass-card text-foreground hover:bg-secondary/20 transition-all duration-300 hover:scale-105 active:scale-95 border border-primary/20 hover:border-primary/50 flex items-center gap-2 whitespace-nowrap"
               >
                 <Download className="w-5 h-5 text-primary group-hover:translate-y-0.5 transition-transform" />
-                Download Resume
+                Download CV
               </a>
 
            

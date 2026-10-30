@@ -3,13 +3,39 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { ExternalLink, Github, Code, Smartphone, Globe, Database, ChevronLeft, ChevronRight, X, Activity, Utensils, Cpu, FileText, Wifi } from 'lucide-react'
+import { ExternalLink, Github, Code, Smartphone, Globe, Database, ChevronLeft, ChevronRight, X, Activity, Utensils, Cpu, FileText, Wifi, HeartPulse } from 'lucide-react'
 import Image from 'next/image'
 
 const projects = [
   {
-    title: 'Fiber Internet Online',
-    description: 'A comprehensive platform specialized in Time Fibre internet services, designed to simplify the application process. Features include an intuitive coverage checker, detailed plan comparisons for home and business, and seamless WhatsApp integration for instant support. The platform focuses on high conversion and user accessibility.',
+    title: 'HerCare',
+    description: 'A secure, AI-assisted women’s health platform developed for the 2026 Nightingale 48-Hour Candidate Build. It guides patients from their first clinic interaction through AI-assisted conversations, authentication, consent, safety screening, and Living Memory to a seamless, patient-confirmed clinician handoff.',
+    technologies: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'Supabase', 'Google Gemini', 'Zod', 'Vitest'],
+    features: [
+      'AI-assisted guest and patient conversations',
+      'Deterministic safety gating and local PHI redaction',
+      'Living Memory with revision provenance',
+      'Patient-controlled clinic consent and handoff',
+      'Role-based clinician dashboard',
+      'Encrypted recovery and Web Push continuity'
+    ],
+    images: [
+      '/images/projects/hercare/main.png',
+      '/images/projects/hercare/chat.png',
+      '/images/projects/hercare/clinician.png',
+      '/images/projects/hercare/user_dash.png'
+    ],
+    visualLabel: 'Project Overview',
+    categories: ['Web App', 'AI'],
+    icon: <HeartPulse className="w-6 h-6" />,
+    gradient: 'from-rose-500 via-fuchsia-500 to-violet-600',
+    github: 'https://github.com/cwhui1001/my_clinic_ai',
+    demo: 'https://youtu.be/IyE4vo5aBJ8',
+    sourceLabel: 'Candidate Submission'
+  },
+  {
+    title: 'Unifi Distributer',
+    description: 'A comprehensive platform specialized in Unifi internet services, designed to simplify the application process. Features include an intuitive coverage checker, detailed plan comparisons for home and business, and seamless WhatsApp integration for instant support. The platform focuses on high conversion and user accessibility.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Hostinger', 'Google Tag Manager'],
     features: [
       'Coverage Checker',
@@ -20,16 +46,16 @@ const projects = [
       'Responsive UI'
     ],
     images: [
-      '/images/projects/fiber-internet/main.png',
-      '/images/projects/fiber-internet/plans.png',
-      '/images/projects/fiber-internet/coverage.png',
-      '/images/projects/fiber-internet/contact.png'
+      '/images/projects/unifi-distributer/plans.png',
+      '/images/projects/unifi-distributer/main.png',
+      '/images/projects/unifi-distributer/time.png',
+      '/images/projects/unifi-distributer/faq.png'
     ],
     categories: ['Web App'],
     icon: <Wifi className="w-6 h-6" />,
     gradient: 'from-fuchsia-500 to-pink-600',
-    github: 'https://github.com/cwhui1001/time_distributer', 
-    demo: 'https://fiberinternetonline.my/'
+    github: 'https://github.com/cwhui1001/Unifi_Distributer', 
+    demo: 'https://unifi-my.online/'
   },
   {
     title: 'Health Tracker',
@@ -164,7 +190,7 @@ const projects = [
       '/images/projects/brighterus/features.png',
       '/images/projects/brighterus/admin-dashboard.png'
     ],
-    categories: ['Web App', 'Full Stack'],
+    categories: ['Full Stack'],
     icon: <Globe className="w-6 h-6" />,
     gradient: 'from-purple-500 to-pink-600',
     github: 'https://github.com/cwhui1001/BrighterUs', // Academic project
@@ -205,7 +231,7 @@ const projects = [
     images: [
       '/images/projects/huan-fitness-pal/dashboard.png'
     ],
-    categories: ['Web App'],
+    categories: ['Full Stack'],
     icon: <Database className="w-6 h-6" />,
     gradient: 'from-blue-500 to-green-600',
     github: 'https://github.com/cwhui1001/huan_fitness_pal',
@@ -389,7 +415,9 @@ export function Projects() {
 
                 {/* Project Screenshots Gallery */}
                 <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Project Screenshots:</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
+                    {'visualLabel' in project ? `${project.visualLabel}:` : 'Project Screenshots:'}
+                  </h4>
                   
                   {/* Main Featured Image */}
                   <div className="mb-4">
@@ -399,7 +427,7 @@ export function Projects() {
                     >
                       <Image
                         src={project.images[0]}
-                        alt={`${project.title} - Main Screenshot`}
+                        alt={`${project.title} - ${'visualLabel' in project ? project.visualLabel : 'Main Screenshot'}`}
                         fill
                         className="object-cover group-hover/main:scale-105 transition-transform duration-500"
                         sizes="(max-width: 768px) 100vw, 50vw"
@@ -414,7 +442,7 @@ export function Projects() {
                       </div>
                       {/* Image Badge */}
                       <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded-full text-xs font-medium text-gray-900 dark:text-white">
-                        Main View
+                        {'visualLabel' in project ? project.visualLabel : 'Main View'}
                       </div>
                     </div>
                   </div>
@@ -532,7 +560,7 @@ export function Projects() {
                   ) : (
                     <span className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-400 dark:text-gray-500 rounded-lg cursor-not-allowed opacity-60">
                       <Github className="w-4 h-4" />
-                      Private/Enterprise
+                      {'sourceLabel' in project ? project.sourceLabel : 'Private/Enterprise'}
                     </span>
                   )}
                 </div>
