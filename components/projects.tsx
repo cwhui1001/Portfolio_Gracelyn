@@ -79,7 +79,7 @@ const projects = [
     icon: <Activity className="w-6 h-6" />,
     gradient: 'from-rose-500 to-pink-600',
     github: 'https://github.com/sunwaydcis/final-project-cwhui1001', 
-    demo: '#' 
+    demo: 'https://youtu.be/_fv-CfPEXRw?si=nIy1h3LSwZXjqQOl' 
   },
   {
     title: 'Nutrition Tracker (Eat Smart AI)',
@@ -156,12 +156,13 @@ const projects = [
   {
     title: 'SAP Support Chatbot',
     description: 'An intelligent AI-powered chatbot designed to provide automated support for SAP-related queries. Built with artificial intelligence capabilities to enhance user experience and reduce support response time.',
-    technologies: ['C#', 'Blazor', 'Artificial Intelligence (AI)', 'Chatbot Development'],
+    technologies: ['C#', 'Blazor', 'Artificial Intelligence (AI)', 'Chatbot Development','RAG (Retrieval-Augmented Generation)', 'SAP ERP', 'LLM (Large Language Model)'],
     features: [
       'AI-powered responses',
       'SAP system integration',
       'Automated support queries',
       'Real-time assistance',
+      'RAG for context-aware responses',
       'Summarise the data in SAP documentation with charts'
     ],
     images: [
